@@ -8,16 +8,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.song.paper.R;
+import com.example.song.paper.common.ExceptionHandler;
+import com.example.song.paper.common.base.BaseObserver;
 import com.example.song.paper.common.base.BaseResponse;
 import com.example.song.paper.login.model.LoginModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.internal.observers.BlockingBaseObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView {
@@ -52,11 +51,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
                 model.login(username.getText().toString(),password.getText().toString())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Observer<BaseResponse<String[]>>() {
-                            @Override
-                            public void onSubscribe(Disposable d) {
-
-                            }
+                        .subscribe(new BaseObserver<BaseResponse<String[]>>() {
 
                             @Override
                             public void onNext(BaseResponse<String[]> baseResponse) {
@@ -64,12 +59,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
                             }
 
                             @Override
-                            public void onError(Throwable e) {
-
-                            }
-
-                            @Override
-                            public void onComplete() {
+                            public void onError(ExceptionHandler.ResponeThrowable e) {
 
                             }
                         });

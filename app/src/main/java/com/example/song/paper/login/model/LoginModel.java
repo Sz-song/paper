@@ -1,6 +1,7 @@
 package com.example.song.paper.login.model;
 
 import com.example.song.paper.common.HttpService;
+import com.example.song.paper.common.HttpServiceInstance;
 import com.example.song.paper.common.L;
 import com.example.song.paper.common.base.BaseResponse;
 import com.google.gson.Gson;
@@ -12,7 +13,8 @@ import io.reactivex.Observable;
 import okhttp3.RequestBody;
 
 public class LoginModel implements ILoginModel {
-    HttpService httpService;
+    private HttpService httpService;
+    public LoginModel(){httpService = HttpServiceInstance.getInstance();}
 //    @Override
 //    public void login(String username, String password) {
 //        new Thread(() -> {
