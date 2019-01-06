@@ -2,11 +2,14 @@ package com.example.song.paper.login.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.GestureDetector;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.song.paper.R;
 import com.example.song.paper.common.ExceptionHandler;
 import com.example.song.paper.common.base.BaseObserver;
@@ -31,12 +34,16 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     TextView forgetPassword;
     @BindView(R.id.register)
     TextView register;
-    private LoginModel model=new LoginModel();
+    @BindView(R.id.background)
+    ImageView background;
+    private LoginModel model = new LoginModel();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        Glide.with(this).load(R.drawable.bg_login).into(background);
     }
 
     @Override
@@ -48,7 +55,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login:
-                model.login(username.getText().toString(),password.getText().toString())
+                model.login(username.getText().toString(), password.getText().toString())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new BaseObserver<BaseResponse<String[]>>() {
