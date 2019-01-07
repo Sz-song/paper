@@ -1,4 +1,4 @@
-package com.example.song.paper.common;
+package com.example.song.paper.common.utils;
 
 import android.content.Context;
 import android.util.Log;

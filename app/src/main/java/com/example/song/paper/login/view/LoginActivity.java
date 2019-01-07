@@ -8,10 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.song.paper.R;
-import com.example.song.paper.common.GlideApp;
+import com.example.song.paper.common.utils.GlideApp;
 import com.example.song.paper.login.presenter.ILoginPresenter;
 import com.example.song.paper.login.presenter.LoginPresenter;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

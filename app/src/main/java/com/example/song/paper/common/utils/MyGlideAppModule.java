@@ -1,4 +1,4 @@
-package com.example.song.paper.common;
+package com.example.song.paper.common.utils;
 
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
