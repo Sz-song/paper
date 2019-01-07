@@ -2,7 +2,7 @@ package com.example.song.paper.login.model;
 
 import com.example.song.paper.common.HttpService;
 import com.example.song.paper.common.HttpServiceInstance;
-import com.example.song.paper.common.L;
+import com.example.song.paper.common.utils.L;
 import com.example.song.paper.common.base.BaseResponse;
 import com.google.gson.Gson;
 

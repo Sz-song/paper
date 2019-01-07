@@ -3,7 +3,7 @@ package com.example.song.paper.login.presenter;
 
 import com.example.song.paper.common.ExceptionHandler;
 import com.example.song.paper.common.HttpServiceInstance;
-import com.example.song.paper.common.L;
+import com.example.song.paper.common.utils.L;
 import com.example.song.paper.common.base.BaseObserver;
 import com.example.song.paper.login.model.ILoginModel;
 import com.example.song.paper.login.model.LoginModel;

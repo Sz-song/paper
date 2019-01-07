@@ -1,4 +1,4 @@
-package com.example.song.paper.common;
+package com.example.song.paper.common.utils;
 
 import android.util.Log;
 
@@ -14,6 +14,10 @@ public class L {
 
     // 下面四个是默认tag的函数
     public static void i(String msg)
+
+
+
+
     {
         if (!isDebug) return;
         StackTraceElement targetStackTraceElement = getTargetStackTraceElement();
