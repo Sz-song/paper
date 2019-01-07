@@ -1,9 +1,10 @@
 package com.example.song.paper.login.model;
 
-import com.example.song.paper.common.utils.HttpService;
+import com.example.song.paper.HttpService;
 import com.example.song.paper.common.utils.HttpServiceInstance;
 import com.example.song.paper.common.utils.L;
 import com.example.song.paper.common.base.BaseResponse;
+import com.example.song.paper.common.utils.Md5Utils;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -21,14 +22,14 @@ public class LoginModel implements ILoginModel {
 
     }
     @Override
-    public Observable<BaseResponse<String[]>> login(String username, String password) {
-//        String timestamp = FileHelper.getTimeStamp();
-//        String randomstr = FileHelper.getRandomString(10);
-//        String signature = FileHelper.getSignature(timestamp,randomstr);
+    public Observable<BaseResponse<String>> login(String username, String password) {
+        String timestamp = Md5Utils.getTimeStamp();
+        String randomstr = Md5Utils.getRandomString(10);
+        String signature = Md5Utils.getSignature(timestamp,randomstr);
         Map map = new HashMap();
-//        map.put("timestamp",timestamp);
-//        map.put("randomstr",randomstr);
-//        map.put("signature",signature);
+        map.put("timestamp",timestamp);
+        map.put("randomstr",randomstr);
+        map.put("signature",signature);
         map.put("action","login");
         Map data = new HashMap();
         data.put("username",username);

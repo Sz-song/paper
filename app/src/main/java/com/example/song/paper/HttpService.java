@@ -1,4 +1,4 @@
-package com.example.song.paper.common.utils;
+package com.example.song.paper;
 
 import com.example.song.paper.common.base.BaseResponse;
 
@@ -9,5 +9,5 @@ import retrofit2.http.POST;
 
 public interface HttpService {
     @POST("app_api/login.php")
-    Observable<BaseResponse<String[]>> login(@Body RequestBody body);
+    Observable<BaseResponse<String>> login(@Body RequestBody body);
 }
