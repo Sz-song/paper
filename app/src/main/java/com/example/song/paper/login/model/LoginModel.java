@@ -15,26 +15,6 @@ import okhttp3.RequestBody;
 public class LoginModel implements ILoginModel {
     private HttpService httpService;
     public LoginModel(){httpService = HttpServiceInstance.getInstance();}
-//    @Override
-//    public void login(String username, String password) {
-//        new Thread(() -> {
-//            OkHttpClient client=new OkHttpClient();
-//            RequestBody requestBody=new FormBody.Builder()
-//                    .add("userame",username)
-//                    .add("password",password)
-//                    .build();
-//            Request request =new Request.Builder()
-//                    .url(AppConstant.Base_Url+"app_api/login.php")
-//                    .build();
-//            try {
-//                Response response=client.newCall(request).execute();
-//                String responseData=response.body().string();
-//                L.e("respose is:"+responseData);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }).start();
-//    }
 
     @Override
     public void register(String username, String password) {

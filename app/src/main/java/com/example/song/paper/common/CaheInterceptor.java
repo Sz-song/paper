@@ -3,6 +3,8 @@ package com.example.song.paper.common;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.song.paper.common.utils.NetworkUtils;
+
 import java.io.IOException;
 
 import okhttp3.CacheControl;
