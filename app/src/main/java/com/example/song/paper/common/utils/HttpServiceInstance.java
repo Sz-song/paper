@@ -4,7 +4,7 @@ import android.content.Context;
 import android.webkit.WebSettings;
 
 import com.example.song.paper.AppConstant;
-import com.example.song.paper.HttpService;
+import com.example.song.paper.common.HttpService;
 import com.example.song.paper.MyApplication;
 import com.example.song.paper.common.base.BaseResponse;
 

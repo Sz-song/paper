@@ -1,4 +1,4 @@
-package com.example.song.paper;
+package com.example.song.paper.common;
 
 import com.example.song.paper.common.base.BaseResponse;
 

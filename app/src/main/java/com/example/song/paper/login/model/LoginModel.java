@@ -1,6 +1,6 @@
 package com.example.song.paper.login.model;
 
-import com.example.song.paper.HttpService;
+import com.example.song.paper.common.HttpService;
 import com.example.song.paper.common.utils.HttpServiceInstance;
 import com.example.song.paper.common.utils.L;
 import com.example.song.paper.common.base.BaseResponse;
