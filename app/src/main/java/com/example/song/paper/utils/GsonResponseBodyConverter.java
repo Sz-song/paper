@@ -1,8 +1,6 @@
-package com.example.song.paper.common.utils;
+package com.example.song.paper.utils;
 
-import com.example.song.paper.common.base.BaseResponse;
-import com.example.song.paper.common.utils.ExceptionHandler;
-import com.example.song.paper.common.utils.L;
+import com.example.song.paper.base.BaseResponse;
 import com.google.gson.Gson;
 
 import java.io.IOException;

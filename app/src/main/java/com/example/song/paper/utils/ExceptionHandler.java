@@ -1,8 +1,7 @@
-package com.example.song.paper.common.utils;
+package com.example.song.paper.utils;
 
 import android.net.ParseException;
 
-import com.example.song.paper.common.utils.L;
 import com.google.gson.JsonParseException;
 
 import org.apache.http.conn.ConnectTimeoutException;

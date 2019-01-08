@@ -1,6 +1,6 @@
 package com.example.song.paper.common;
 
-import com.example.song.paper.common.base.BaseResponse;
+import com.example.song.paper.base.BaseResponse;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;

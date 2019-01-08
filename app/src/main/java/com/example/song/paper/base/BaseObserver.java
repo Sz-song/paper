@@ -1,6 +1,6 @@
-package com.example.song.paper.common.base;
+package com.example.song.paper.base;
 
-import com.example.song.paper.common.utils.ExceptionHandler;
+import com.example.song.paper.utils.ExceptionHandler;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

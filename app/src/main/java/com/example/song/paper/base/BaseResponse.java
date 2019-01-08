@@ -1,4 +1,4 @@
-package com.example.song.paper.common.base;
+package com.example.song.paper.base;
 
 public class BaseResponse<T> {
     private int status;

@@ -1,4 +1,4 @@
-package com.example.song.paper.common.utils;
+package com.example.song.paper.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

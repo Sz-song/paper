@@ -1,4 +1,4 @@
-package com.example.song.paper.common.utils;
+package com.example.song.paper.utils;
 
 import java.security.MessageDigest;
 import java.text.DateFormat;

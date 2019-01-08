@@ -10,9 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.song.paper.R;
-import com.example.song.paper.common.utils.GlideApp;
 import com.example.song.paper.login.presenter.ILoginPresenter;
 import com.example.song.paper.login.presenter.LoginPresenter;
+import com.example.song.paper.utils.GlideApp;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         }
         ButterKnife.bind(this);
         GlideApp.with(this).load(R.drawable.bg_login).into(background);
-        loginPresenter=new LoginPresenter();
+        loginPresenter=new LoginPresenter(this);
     }
 
     @Override

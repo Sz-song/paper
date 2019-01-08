@@ -1,10 +1,10 @@
 package com.example.song.paper.login.model;
 
 import com.example.song.paper.common.HttpService;
-import com.example.song.paper.common.utils.HttpServiceInstance;
-import com.example.song.paper.common.utils.L;
-import com.example.song.paper.common.base.BaseResponse;
-import com.example.song.paper.common.utils.Md5Utils;
+import com.example.song.paper.utils.HttpServiceInstance;
+import com.example.song.paper.utils.L;
+import com.example.song.paper.base.BaseResponse;
+import com.example.song.paper.utils.Md5Utils;
 import com.google.gson.Gson;
 
 import java.util.HashMap;

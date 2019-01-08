@@ -1,4 +1,4 @@
-package com.example.song.paper.common.utils;
+package com.example.song.paper.utils;
 
 import com.google.gson.Gson;
 
