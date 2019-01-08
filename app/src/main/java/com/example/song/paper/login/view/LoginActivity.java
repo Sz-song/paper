@@ -46,8 +46,8 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
-    public void showToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    public void jumpActivity() {
+
     }
 
     @OnClick({R.id.login, R.id.forget_password, R.id.register})
@@ -57,10 +57,16 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
                 loginPresenter.login(username.getText().toString(),password.getText().toString());
                 break;
             case R.id.forget_password:
+                loginPresenter.forget_pwd(username.getText().toString());
                 break;
             case R.id.register:
                 loginPresenter.register(username.getText().toString(),password.getText().toString());
                 break;
         }
+    }
+
+    @Override
+    public void showToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
