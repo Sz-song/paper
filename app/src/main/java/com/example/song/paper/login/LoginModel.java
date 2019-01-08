@@ -1,4 +1,4 @@
-package com.example.song.paper.login.model;
+package com.example.song.paper.login;
 
 import com.example.song.paper.common.HttpService;
 import com.example.song.paper.utils.HttpServiceInstance;
@@ -13,7 +13,7 @@ import java.util.Map;
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
 
-public class LoginModel implements ILoginModel {
+public class LoginModel implements LoginContract.ILoginModel {
     private HttpService httpService;
     public LoginModel(){httpService = HttpServiceInstance.getInstance();}
 

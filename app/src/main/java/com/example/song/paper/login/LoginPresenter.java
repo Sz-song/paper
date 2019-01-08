@@ -1,24 +1,19 @@
-package com.example.song.paper.login.presenter;
-
-
+package com.example.song.paper.login;
+import com.example.song.paper.base.BasePresenter;
 import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.HttpServiceInstance;
 import com.example.song.paper.utils.L;
 import com.example.song.paper.base.BaseObserver;
-import com.example.song.paper.login.model.ILoginModel;
-import com.example.song.paper.login.model.LoginModel;
-import com.example.song.paper.login.view.ILoginView;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class LoginPresenter implements ILoginPresenter {
-    private ILoginModel model=new LoginModel();
-    private ILoginView loginView;
+public class LoginPresenter extends BasePresenter<LoginContract.ILoginView> implements LoginContract.ILoginPresenter {
+    private LoginContract.ILoginModel model;
 
-    public LoginPresenter(ILoginView loginView) {
-        this.loginView = loginView;
+    public LoginPresenter() {
+        model=new LoginModel();
     }
-
     @Override
     public void login(String username, String password) {
         model.login(username,password)
@@ -29,12 +24,16 @@ public class LoginPresenter implements ILoginPresenter {
                     @Override
                     public void onNext(String s) {
                         L.e("s is:"+s);
-                        loginView.showToast("登陆成功");
+                        if(view!=null) {
+                            view.showToast("登陆成功");
+                        }
                     }
                     @Override
                     public void onError(ExceptionHandler.ResponeThrowable e) {
                         L.e(e.status+"  "+e.message);
-                        loginView.showToast("登陆失败"+e.message);
+                        if(view!=null) {
+                            view.showToast("登陆失败" + e.message);
+                        }
                     }
                 });
     }
