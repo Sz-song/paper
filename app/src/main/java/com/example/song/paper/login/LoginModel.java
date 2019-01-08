@@ -18,10 +18,6 @@ public class LoginModel implements LoginContract.ILoginModel {
     public LoginModel(){httpService = HttpServiceInstance.getInstance();}
 
     @Override
-    public void register(String username, String password) {
-
-    }
-    @Override
     public Observable<BaseResponse<String>> login(String username, String password) {
         String timestamp = Md5Utils.getTimeStamp();
         String randomstr = Md5Utils.getRandomString(10);

@@ -26,6 +26,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView> impl
                         L.e("s is:"+s);
                         if(view!=null) {
                             view.showToast("登陆成功");
+                            view.jumpActivity();
                         }
                     }
                     @Override
@@ -38,18 +39,4 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView> impl
                 });
     }
 
-    @Override
-    public void register(String username, String password) {
-
-    }
-
-    @Override
-    public void forget_pwd(String username) {
-
-    }
-
-    @Override
-    public void getCode(String username) {
-
-    }
 }

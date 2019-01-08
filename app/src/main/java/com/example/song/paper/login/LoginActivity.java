@@ -1,5 +1,6 @@
 package com.example.song.paper.login;
 
+import android.content.Intent;
 import android.os.Build;
 import android.view.View;
 import android.view.WindowManager;
@@ -9,7 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseActivity;
-import com.example.song.paper.utils.GlideApp;
+import com.example.song.paper.common.utils.GlideApp;
+import com.example.song.paper.register.RegisterActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,15 +64,20 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @OnClick({R.id.login, R.id.forget_password, R.id.register})
     public void onViewClicked(View view) {
+        Intent intent;
         switch (view.getId()) {
             case R.id.login:
                 mPresenter.login(username.getText().toString(),password.getText().toString());
                 break;
             case R.id.forget_password:
-                mPresenter.forget_pwd(username.getText().toString());
+                intent=new Intent(this,RegisterActivity.class);
+                intent.putExtra("type","1");
+                startActivity(intent);
                 break;
             case R.id.register:
-                mPresenter.register(username.getText().toString(),password.getText().toString());
+                intent=new Intent(this,RegisterActivity.class);
+                intent.putExtra("type","0");
+                startActivity(intent);
                 break;
         }
     }
