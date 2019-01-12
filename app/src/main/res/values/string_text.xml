@@ -3,4 +3,5 @@
     <string name="login">登录</string>
     <string name="forget_password">忘记密码</string>
     <string name="register">立即注册</string>
+    <string name="getcode">获取验证码</string>
 </resources>

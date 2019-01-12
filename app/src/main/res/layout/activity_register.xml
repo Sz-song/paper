@@ -33,5 +33,45 @@
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
         android:layout_gravity="center">
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:background="@drawable/login_edit"
+            android:layout_height="40dp" />
+        <View
+            android:background="@color/blackLight"
+            android:layout_width="match_parent"
+            android:layout_height="1dp">
+        </View>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <EditText
+                android:id="@+id/validcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="100dp"
+                android:background="@drawable/login_edit"/>
+            <TextView
+                android:id="@+id/getcode"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:minWidth="80dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/getcode"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:layout_height="30dp"
+                android:background="@drawable/login_btn"/>
+        </RelativeLayout>
+        <View
+            android:background="@color/blackLight"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="100dp"
+            android:layout_height="1dp"/>
+
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
