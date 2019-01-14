@@ -26,6 +26,12 @@
                 android:textSize="20sp"  />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
+    <ImageView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -37,6 +43,8 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:background="@drawable/login_edit"
+            android:hint="@string/username"
+            android:textSize="15sp"
             android:layout_height="40dp" />
         <View
             android:background="@color/blackLight"
@@ -52,7 +60,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="100dp"
-                android:background="@drawable/login_edit"/>
+                android:hint="@string/validcode"
+                android:textSize="15sp"
+                android:background="@drawable/login_edit" />
             <TextView
                 android:id="@+id/getcode"
                 android:layout_alignParentEnd="true"
@@ -72,6 +82,38 @@
             android:layout_width="match_parent"
             android:layout_marginEnd="100dp"
             android:layout_height="1dp"/>
-
+        <EditText
+            android:id="@+id/petname"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="15sp"
+            android:background="@drawable/login_edit"
+            android:hint="@string/petname"/>
+        <View
+            android:background="@color/blackLight"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="@string/password"
+            android:textSize="15sp"
+            android:background="@drawable/login_edit"/>
+        <View
+            android:background="@color/blackLight"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <EditText
+            android:id="@+id/re_password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="@string/re_password"
+            android:textSize="15sp"
+            android:background="@drawable/login_edit"/>
+        <View
+            android:background="@color/blackLight"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

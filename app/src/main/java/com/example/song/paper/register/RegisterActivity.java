@@ -4,20 +4,32 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseActivity;
+import com.example.song.paper.common.utils.GlideApp;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RegisterActivity extends BaseActivity<RegisterPresenter> implements RegisterContract.IRegisterView {
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.username)
+    EditText username;
+    @BindView(R.id.validcode)
+    EditText validcode;
+    @BindView(R.id.getcode)
+    TextView getcode;
+    @BindView(R.id.background)
+    ImageView background;
     private String type;
 
     @Override
@@ -41,6 +53,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
             actionBar.setDisplayShowTitleEnabled(false);
         }
         Intent intent = getIntent();
+        GlideApp.with(this).load(R.drawable.bg_register).into(background);
         type = intent.getStringExtra("type");
         if (type.equals("0")) {
             title.setText("注册");
@@ -62,5 +75,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     @Override
     protected void onEventDestroy() {
 
+    }
+    @OnClick(R.id.getcode)
+    public void onViewClicked() {
     }
 }

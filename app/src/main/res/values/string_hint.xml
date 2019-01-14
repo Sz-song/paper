@@ -2,4 +2,7 @@
 <resources>
     <string name="username">请输入用户名</string>
     <string name="password">请输入密码</string>
+    <string name="re_password">请再次输入密码</string>
+    <string name="validcode">请输入验证码</string>
+    <string name="petname">请输入昵称</string>
 </resources>
