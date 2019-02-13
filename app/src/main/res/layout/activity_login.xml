@@ -5,37 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".login.LoginActivity">
-    <ImageView
-        android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:layout_gravity="center"
         android:fitsSystemWindows="true">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/icon"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="26sp"
+            android:textColor="@color/blackLight"
+            android:textStyle="bold"
+            android:text="@string/welcometologin"
+            android:minHeight="40dp"/>
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:layout_marginTop="50dp"
+            android:textSize="16sp"
             android:minHeight="40dp"
             android:gravity="center_vertical"
             android:background="@drawable/login_edit"
             android:hint="@string/username"/>
         <View
-            android:background="@color/white"
+            android:background="@color/lightGray"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:layout_marginTop="10dp"
             android:inputType="textPassword"
             android:minHeight="40dp"
@@ -43,17 +53,17 @@
             android:background="@drawable/login_edit"
             android:hint="@string/password"/>
         <View
-            android:background="@color/white"
+            android:background="@color/lightGray"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
         <TextView
             android:id="@+id/login"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:padding="3dp"
-            android:textSize="14sp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
+            android:textSize="15sp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
             android:textColor="@color/blackLight"
@@ -61,14 +71,15 @@
             android:layout_height="36dp"
             android:text="@string/login"/>
         <RelativeLayout
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp">
             <TextView
                 android:id="@+id/forget_password"
                 android:text="@string/forget_password"
                 android:layout_width="wrap_content"
-                android:textSize="13sp"
+                android:textSize="14sp"
                 android:gravity="center_vertical"
                 android:layout_height="30dp" />
             <TextView
@@ -76,7 +87,7 @@
                 android:text="@string/register"
                 android:layout_width="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:textSize="13sp"
+                android:textSize="14sp"
                 android:gravity="center_vertical"
                 android:layout_height="30dp" />
         </RelativeLayout>

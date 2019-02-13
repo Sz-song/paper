@@ -28,8 +28,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     EditText validcode;
     @BindView(R.id.getcode)
     TextView getcode;
-    @BindView(R.id.background)
-    ImageView background;
     private String type;
 
     @Override
@@ -53,7 +51,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
             actionBar.setDisplayShowTitleEnabled(false);
         }
         Intent intent = getIntent();
-        GlideApp.with(this).load(R.drawable.bg_register).into(background);
         type = intent.getStringExtra("type");
         if (type.equals("0")) {
             title.setText("注册");

@@ -30,9 +30,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     TextView forgetPassword;
     @BindView(R.id.register)
     TextView register;
-    @BindView(R.id.background)
-    ImageView background;
-
     @Override
     protected int getLayout() {
         return R.layout.activity_login;
@@ -49,7 +46,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
         ButterKnife.bind(this);
-        GlideApp.with(this).load(R.drawable.bg_login).into(background);
     }
 
     @Override
