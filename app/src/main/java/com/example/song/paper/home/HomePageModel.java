@@ -1,4 +1,4 @@
-package com.example.song.paper.homepage;
+package com.example.song.paper.home;
 
 public class HomePageModel implements HomePageConstract.IHomePageModel {
 }

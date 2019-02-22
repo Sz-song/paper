@@ -18,7 +18,6 @@ public interface RegisterContract {
 
 
     interface IRegisterView {
-        void showToast(String msg);
         void jumpActivity();
     }
 }

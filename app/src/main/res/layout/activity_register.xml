@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.song.paper.register.RegisterActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.song.paper.register.RegisterActivity">
+    android:background="@color/white">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -22,16 +24,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:singleLine="true"
-                android:textColor="@color/white"
-                android:textSize="20sp"  />
+                android:textColor="@color/blackLight"
+                android:textSize="18sp"/>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-    <ImageView
+    <View
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:id="@+id/background"
+        android:background="@color/backgroundGray"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:layout_height="1dp"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -42,8 +43,8 @@
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
-            android:background="@drawable/login_edit"
-            android:hint="@string/username"
+            android:background="@drawable/edit_transparent"
+            android:hint="@string/input_phone"
             android:textSize="15sp"
             android:layout_height="40dp" />
         <View
@@ -62,7 +63,7 @@
                 android:layout_marginEnd="100dp"
                 android:hint="@string/validcode"
                 android:textSize="15sp"
-                android:background="@drawable/login_edit" />
+                android:background="@drawable/edit_transparent" />
             <TextView
                 android:id="@+id/getcode"
                 android:layout_alignParentEnd="true"
@@ -75,7 +76,7 @@
                 android:gravity="center"
                 android:textSize="14sp"
                 android:layout_height="30dp"
-                android:background="@drawable/login_btn"/>
+                android:background="@drawable/btn_activity_un"/>
         </RelativeLayout>
         <View
             android:background="@color/blackLight"
@@ -87,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:textSize="15sp"
-            android:background="@drawable/login_edit"
+            android:background="@drawable/edit_transparent"
             android:hint="@string/petname"/>
         <View
             android:background="@color/blackLight"
@@ -99,7 +100,7 @@
             android:layout_height="40dp"
             android:hint="@string/password"
             android:textSize="15sp"
-            android:background="@drawable/login_edit"/>
+            android:background="@drawable/edit_transparent"/>
         <View
             android:background="@color/blackLight"
             android:layout_width="match_parent"
@@ -110,10 +111,24 @@
             android:layout_height="40dp"
             android:hint="@string/re_password"
             android:textSize="15sp"
-            android:background="@drawable/login_edit"/>
+            android:background="@drawable/edit_transparent"/>
         <View
             android:background="@color/blackLight"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
+        <TextView
+            android:id="@+id/register"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:padding="3dp"
+            android:textSize="15sp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:textColor="@color/blackLight"
+            android:background="@drawable/btn_activity_un"
+            android:layout_height="36dp"
+            android:text="@string/register"/>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

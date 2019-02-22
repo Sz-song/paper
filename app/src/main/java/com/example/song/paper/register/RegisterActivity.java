@@ -4,20 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseActivity;
-import com.example.song.paper.common.utils.GlideApp;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RegisterActivity extends BaseActivity<RegisterPresenter> implements RegisterContract.IRegisterView {
+
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.toolbar)
@@ -28,7 +28,14 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     EditText validcode;
     @BindView(R.id.getcode)
     TextView getcode;
-    private String type;
+    @BindView(R.id.petname)
+    EditText petname;
+    @BindView(R.id.password)
+    EditText password;
+    @BindView(R.id.re_password)
+    EditText rePassword;
+    @BindView(R.id.register)
+    TextView register;
 
     @Override
     protected int getLayout() {
@@ -47,11 +54,11 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.mipmap.back1);
+            actionBar.setHomeAsUpIndicator(R.mipmap.back_black);
             actionBar.setDisplayShowTitleEnabled(false);
         }
         Intent intent = getIntent();
-        type = intent.getStringExtra("type");
+        String type = intent.getStringExtra("type");
         if (type.equals("0")) {
             title.setText("注册");
         } else if (type.equals("1")) {
@@ -64,16 +71,27 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
 
     }
 
-    @Override
-    public void showToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
 
     @Override
     protected void onEventDestroy() {
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+        }
+        return true;
+    }
+
     @OnClick(R.id.getcode)
-    public void onViewClicked() {
+    public void onGetcodeClicked() {
+        Toast.makeText(this, "敬请期待", Toast.LENGTH_SHORT).show();
+    }
+    @OnClick(R.id.register)
+    public void onRegisterClicked() {
+        Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show();
     }
 }

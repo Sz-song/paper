@@ -37,7 +37,7 @@
             android:textSize="16sp"
             android:minHeight="40dp"
             android:gravity="center_vertical"
-            android:background="@drawable/login_edit"
+            android:background="@drawable/edit_transparent"
             android:hint="@string/username"
             />
         <View
@@ -53,7 +53,7 @@
             android:inputType="textPassword"
             android:minHeight="40dp"
             android:gravity="center_vertical"
-            android:background="@drawable/login_edit"
+            android:background="@drawable/edit_transparent"
             android:hint="@string/password"/>
         <View
             android:background="@color/lightGray"
@@ -70,7 +70,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
             android:textColor="@color/blackLight"
-            android:background="@drawable/login_btn"
+            android:background="@drawable/btn_activity_un"
             android:layout_height="36dp"
             android:text="@string/login"/>
         <RelativeLayout
