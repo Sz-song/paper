@@ -25,7 +25,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView> impl
                     public void onNext(String s) {
                         L.e("s is:"+s);
                         if(view!=null) {
-                            view.showToast("登陆成功");
+                            view.showToast("登录成功");
                             view.jumpActivity();
                         }
                     }
@@ -33,7 +33,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView> impl
                     public void onError(ExceptionHandler.ResponeThrowable e) {
                         L.e(e.status+"  "+e.message);
                         if(view!=null) {
-                            view.showToast("登陆失败" + e.message);
+                            view.showToast("登录失败" + e.message);
                         }
                     }
                 });
