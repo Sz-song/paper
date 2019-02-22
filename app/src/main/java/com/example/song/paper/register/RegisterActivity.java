@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseActivity;
+import com.example.song.paper.home.HomePageActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -89,6 +90,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     @OnClick(R.id.getcode)
     public void onGetcodeClicked() {
         Toast.makeText(this, "敬请期待", Toast.LENGTH_SHORT).show();
+        Intent  intent=new Intent(this,HomePageActivity.class);
+        startActivity(intent);
     }
     @OnClick(R.id.register)
     public void onRegisterClicked() {

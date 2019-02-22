@@ -46,7 +46,7 @@ public class HomePageActivity extends BaseActivity<HomePagePresenter> implements
 
     @Override
     protected HomePagePresenter initPresent() {
-        return null;
+        return new HomePagePresenter();
     }
 
     @Override
@@ -63,15 +63,19 @@ public class HomePageActivity extends BaseActivity<HomePagePresenter> implements
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.homepage:
-                Toast.makeText(HomePageActivity.this, "123", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomePageActivity.this, "首页", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.guangchang:
+                Toast.makeText(HomePageActivity.this, "广场", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.fabu:
+                Toast.makeText(HomePageActivity.this, "发布", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.message:
+                Toast.makeText(HomePageActivity.this, "消息", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.me:
+                Toast.makeText(HomePageActivity.this, "我的", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
