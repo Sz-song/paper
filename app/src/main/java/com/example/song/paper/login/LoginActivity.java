@@ -5,14 +5,11 @@ import android.os.Build;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseActivity;
-import com.example.song.paper.common.utils.GlideApp;
 import com.example.song.paper.register.RegisterActivity;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

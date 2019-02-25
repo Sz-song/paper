@@ -1,4 +1,4 @@
-package com.example.song.paper.home;
+package com.example.song.paper.home.homepage;
 
 public interface HomePageConstract {
     interface IHomePageModel{

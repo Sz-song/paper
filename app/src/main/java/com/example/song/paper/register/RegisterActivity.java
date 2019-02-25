@@ -1,7 +1,6 @@
 package com.example.song.paper.register;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -11,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseActivity;
-import com.example.song.paper.home.HomePageActivity;
+import com.example.song.paper.home.HomeActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,7 +89,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     @OnClick(R.id.getcode)
     public void onGetcodeClicked() {
         Toast.makeText(this, "敬请期待", Toast.LENGTH_SHORT).show();
-        Intent  intent=new Intent(this,HomePageActivity.class);
+        Intent  intent=new Intent(this,HomeActivity.class);
         startActivity(intent);
     }
     @OnClick(R.id.register)
