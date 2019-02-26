@@ -11,13 +11,12 @@ import com.example.song.paper.base.BaseFragment;
 public class SquareFragment extends BaseFragment<SquarePresenter> implements SquareConstract.ISquareView {
     @Override
     protected View initView(LayoutInflater inflater, @Nullable ViewGroup container) {
-        View view = inflater.inflate(R.layout.fragment_square, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_square, container, false);
     }
 
     @Override
     protected SquarePresenter initPresent() {
-        return null;
+        return new SquarePresenter();
     }
 
     @Override

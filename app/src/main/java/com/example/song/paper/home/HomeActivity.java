@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.example.song.paper.R;
 import com.example.song.paper.home.homepage.HomepageFragment;
+import com.example.song.paper.message.MessageFragment;
+import com.example.song.paper.mine.MineFragment;
+import com.example.song.paper.square.SquareFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +46,9 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.me)
     RelativeLayout me;
     private HomepageFragment homepageFragment;
+    private SquareFragment squareFragment;
+    private MessageFragment messageFragment;
+    private MineFragment mineFragment;
     private FragmentManager fragmentManager;
 
     @Override
@@ -58,6 +64,11 @@ public class HomeActivity extends AppCompatActivity {
         picHomepage.setImageResource(R.drawable.icon_homepage_light);
     }
 
+    @OnClick({R.id.homepage, R.id.guangchang, R.id.fabu, R.id.message, R.id.me})
+    public void onViewClicked(View view) {
+        changeFragment(view);
+    }
+
     private void setPicDark() {
         picHomepage.setImageResource(R.drawable.icon_homepage_dark);
         picGuangchang.setImageResource(R.drawable.icon_guangchang_dark);
@@ -65,23 +76,59 @@ public class HomeActivity extends AppCompatActivity {
         picMe.setImageResource(R.drawable.icon_me_dark);
     }
 
-    @OnClick({R.id.homepage, R.id.guangchang, R.id.fabu, R.id.message, R.id.me})
-    public void onViewClicked(View view) {
+    private void changeFragment(View view){
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        if (homepageFragment != null && homepageFragment.isVisible()) {
+            fragmentTransaction.hide(homepageFragment);
+        }
+        if (squareFragment != null && squareFragment .isVisible()) {
+            fragmentTransaction.hide(squareFragment );
+        }
+        if (messageFragment != null && messageFragment.isVisible()) {
+            fragmentTransaction.hide(messageFragment);
+        }
+        if (mineFragment != null && mineFragment .isVisible()) {
+            fragmentTransaction.hide(mineFragment);
+        }
         switch (view.getId()) {
             case R.id.homepage:
-                Toast.makeText(HomeActivity.this, "首页", Toast.LENGTH_SHORT).show();
+                setPicDark();
+                picHomepage.setImageResource(R.drawable.icon_homepage_light);
+                if (homepageFragment == null) {
+                    homepageFragment = new HomepageFragment();
+                    fragmentTransaction.add(R.id.fragment_container, homepageFragment);
+                } else fragmentTransaction.show(homepageFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.guangchang:
-                Toast.makeText(HomeActivity.this, "广场", Toast.LENGTH_SHORT).show();
+                setPicDark();
+                picGuangchang.setImageResource(R.drawable.icon_guangchang_light);
+                if (squareFragment == null) {
+                    squareFragment  = new SquareFragment();
+                    fragmentTransaction.add(R.id.fragment_container, squareFragment );
+                } else fragmentTransaction.show(squareFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.fabu:
                 Toast.makeText(HomeActivity.this, "发布", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.message:
-                Toast.makeText(HomeActivity.this, "消息", Toast.LENGTH_SHORT).show();
+                setPicDark();
+                picMessage.setImageResource(R.drawable.icon_message_light);
+                if (messageFragment == null) {
+                    messageFragment = new MessageFragment();
+                    fragmentTransaction.add(R.id.fragment_container, messageFragment);
+                } else fragmentTransaction.show(messageFragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.me:
-                Toast.makeText(HomeActivity.this, "我的", Toast.LENGTH_SHORT).show();
+                setPicDark();
+                picMe.setImageResource(R.drawable.icon_me_light);
+                if (mineFragment== null) {
+                    mineFragment = new MineFragment();
+                    fragmentTransaction.add(R.id.fragment_container, mineFragment);
+                } else fragmentTransaction.show(mineFragment);
+                fragmentTransaction.commit();
                 break;
         }
     }

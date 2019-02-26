@@ -32,8 +32,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:layout_weight="1">
                 <ImageView
                     android:id="@+id/pic_homepage"
@@ -47,8 +47,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:layout_weight="1">
                 <ImageView
                     android:id="@+id/pic_guangchang"
@@ -76,8 +76,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:layout_weight="1">
                 <ImageView
                     android:id="@+id/pic_message"
@@ -91,8 +91,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:layout_weight="1">
                 <ImageView
                     android:id="@+id/pic_me"
