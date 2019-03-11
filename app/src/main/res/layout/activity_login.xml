@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:textSize="26sp"
-            android:textColor="@color/blackLight"
+            android:textColor="@color/text_black"
             android:textStyle="bold"
             android:text="@string/welcometologin"
             android:minHeight="40dp"/>
@@ -69,7 +69,7 @@
             android:layout_marginEnd="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:textColor="@color/blackLight"
+            android:textColor="@color/text_black"
             android:background="@drawable/btn_activity_un"
             android:layout_height="36dp"
             android:text="@string/login"/>

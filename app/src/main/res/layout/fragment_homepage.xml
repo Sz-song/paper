@@ -35,7 +35,7 @@
                 android:layout_height="25dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/icon_filtrate"
+                android:src="@drawable/ic_filtrate"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>
         <!--<com.donkingliang.banner.CustomBanner-->
@@ -59,7 +59,7 @@
         android:layout_gravity="start"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:headerLayout="@layout/home_drawer_header"
+        app:headerLayout="@layout/drawer_header_home"
         app:insetForeground="@android:color/transparent"
         app:menu="@menu/home_drawer_menu">
     </android.support.design.widget.NavigationView>
