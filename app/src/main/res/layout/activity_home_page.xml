@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/icon_homepage_dark"/>
+                    android:src="@drawable/ic_homepage_dark"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/guangchang"
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/icon_guangchang_dark"/>
+                    android:src="@drawable/ic_guangchang_dark"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/fabu"
@@ -69,7 +69,7 @@
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
                     android:padding="10dp"
-                    android:src="@drawable/icon_fabu"/>
+                    android:src="@drawable/ic_fabu"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/message"
@@ -84,7 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/icon_message_dark"/>
+                    android:src="@drawable/ic_message_dark"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/me"
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/icon_me_dark"/>
+                    android:src="@drawable/ic_me_dark"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

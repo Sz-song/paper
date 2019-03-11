@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
         homepageFragment = new HomepageFragment();
         fragmentTransaction.add(R.id.fragment_container, homepageFragment).commit();
         setPicDark();
-        picHomepage.setImageResource(R.drawable.icon_homepage_light);
+        picHomepage.setImageResource(R.drawable.ic_homepage_light);
     }
 
     @OnClick({R.id.homepage, R.id.guangchang, R.id.fabu, R.id.message, R.id.me})
@@ -70,10 +70,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setPicDark() {
-        picHomepage.setImageResource(R.drawable.icon_homepage_dark);
-        picGuangchang.setImageResource(R.drawable.icon_guangchang_dark);
-        picMessage.setImageResource(R.drawable.icon_message_dark);
-        picMe.setImageResource(R.drawable.icon_me_dark);
+        picHomepage.setImageResource(R.drawable.ic_homepage_dark);
+        picGuangchang.setImageResource(R.drawable.ic_guangchang_dark);
+        picMessage.setImageResource(R.drawable.ic_message_dark);
+        picMe.setImageResource(R.drawable.ic_me_dark);
     }
 
     private void changeFragment(View view){
@@ -93,7 +93,7 @@ public class HomeActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.homepage:
                 setPicDark();
-                picHomepage.setImageResource(R.drawable.icon_homepage_light);
+                picHomepage.setImageResource(R.drawable.ic_homepage_light);
                 if (homepageFragment == null) {
                     homepageFragment = new HomepageFragment();
                     fragmentTransaction.add(R.id.fragment_container, homepageFragment);
@@ -102,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             case R.id.guangchang:
                 setPicDark();
-                picGuangchang.setImageResource(R.drawable.icon_guangchang_light);
+                picGuangchang.setImageResource(R.drawable.ic_guangchang_light);
                 if (squareFragment == null) {
                     squareFragment  = new SquareFragment();
                     fragmentTransaction.add(R.id.fragment_container, squareFragment );
@@ -114,7 +114,7 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             case R.id.message:
                 setPicDark();
-                picMessage.setImageResource(R.drawable.icon_message_light);
+                picMessage.setImageResource(R.drawable.ic_message_light);
                 if (messageFragment == null) {
                     messageFragment = new MessageFragment();
                     fragmentTransaction.add(R.id.fragment_container, messageFragment);
@@ -123,7 +123,7 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             case R.id.me:
                 setPicDark();
-                picMe.setImageResource(R.drawable.icon_me_light);
+                picMe.setImageResource(R.drawable.ic_me_light);
                 if (mineFragment== null) {
                     mineFragment = new MineFragment();
                     fragmentTransaction.add(R.id.fragment_container, mineFragment);

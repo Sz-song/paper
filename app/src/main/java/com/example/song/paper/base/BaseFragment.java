@@ -11,7 +11,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public abstract class BaseFragment<P extends BasePresenter>extends Fragment {
-    protected   P mPresenter;
+    protected   P presenter;
     Unbinder unbinder;
     private boolean isFirstLoad = false;
     private View rootView;
@@ -23,8 +23,8 @@ public abstract class BaseFragment<P extends BasePresenter>extends Fragment {
         if (null == rootView){
             rootView = initView(inflater, container);//让子类实现初始化视图
             unbinder = ButterKnife.bind(this,rootView);
-            mPresenter=initPresent();
-            mPresenter.attachView(this);
+            presenter=initPresent();
+            presenter.attachView(this);
             initEvent(rootView);//初始化事件
             isFirstLoad = true;//视图创建完成，将变量置为true
             if (getUserVisibleHint()) {//如果Fragment可见进行数据加载
@@ -58,14 +58,13 @@ public abstract class BaseFragment<P extends BasePresenter>extends Fragment {
         super.onDestroyView();
         isFirstLoad = false;
         isAlive = false;
-        mPresenter.detachView();
+        presenter.detachView();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
-
     }
 
     //初始化视图接口，子类必须实现

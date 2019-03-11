@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:singleLine="true"
-                android:textColor="@color/blackLight"
+                android:textColor="@color/text_black"
                 android:textSize="18sp"/>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
@@ -48,7 +48,7 @@
             android:textSize="15sp"
             android:layout_height="40dp" />
         <View
-            android:background="@color/blackLight"
+            android:background="@color/text_black"
             android:layout_width="match_parent"
             android:layout_height="1dp">
         </View>
@@ -79,7 +79,7 @@
                 android:background="@drawable/btn_activity_un"/>
         </RelativeLayout>
         <View
-            android:background="@color/blackLight"
+            android:background="@color/text_black"
             android:layout_width="match_parent"
             android:layout_marginEnd="100dp"
             android:layout_height="1dp"/>
@@ -91,7 +91,7 @@
             android:background="@drawable/edit_transparent"
             android:hint="@string/petname"/>
         <View
-            android:background="@color/blackLight"
+            android:background="@color/text_black"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
         <EditText
@@ -102,7 +102,7 @@
             android:textSize="15sp"
             android:background="@drawable/edit_transparent"/>
         <View
-            android:background="@color/blackLight"
+            android:background="@color/text_black"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
         <EditText
@@ -113,7 +113,7 @@
             android:textSize="15sp"
             android:background="@drawable/edit_transparent"/>
         <View
-            android:background="@color/blackLight"
+            android:background="@color/text_black"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
         <TextView
@@ -126,7 +126,7 @@
             android:layout_marginEnd="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:textColor="@color/blackLight"
+            android:textColor="@color/text_black"
             android:background="@drawable/btn_activity_un"
             android:layout_height="36dp"
             android:text="@string/register"/>
