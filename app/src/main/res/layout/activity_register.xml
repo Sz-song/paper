@@ -28,11 +28,6 @@
                 android:textSize="18sp"/>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-    <View
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="@color/backgroundGray"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -48,7 +43,7 @@
             android:textSize="15sp"
             android:layout_height="40dp" />
         <View
-            android:background="@color/text_black"
+            android:background="@color/lightGray"
             android:layout_width="match_parent"
             android:layout_height="1dp">
         </View>
@@ -79,7 +74,7 @@
                 android:background="@drawable/btn_activity_un"/>
         </RelativeLayout>
         <View
-            android:background="@color/text_black"
+            android:background="@color/lightGray"
             android:layout_width="match_parent"
             android:layout_marginEnd="100dp"
             android:layout_height="1dp"/>
@@ -91,7 +86,7 @@
             android:background="@drawable/edit_transparent"
             android:hint="@string/petname"/>
         <View
-            android:background="@color/text_black"
+            android:background="@color/lightGray"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
         <EditText
@@ -102,7 +97,7 @@
             android:textSize="15sp"
             android:background="@drawable/edit_transparent"/>
         <View
-            android:background="@color/text_black"
+            android:background="@color/lightGray"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
         <EditText
@@ -113,7 +108,7 @@
             android:textSize="15sp"
             android:background="@drawable/edit_transparent"/>
         <View
-            android:background="@color/text_black"
+            android:background="@color/lightGray"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
         <TextView
@@ -131,4 +126,9 @@
             android:layout_height="36dp"
             android:text="@string/register"/>
     </LinearLayout>
+    <View
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@color/lightGray"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
 </android.support.design.widget.CoordinatorLayout>
