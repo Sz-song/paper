@@ -13,11 +13,10 @@ public interface RegisterContract {
     interface IRegisterPresenter {
         void register(String username, String password);
         void getCode(String username);
-        void forget_pwd(String username,String password,String code);
     }
 
 
     interface IRegisterView {
-        void jumpActivity();
+
     }
 }

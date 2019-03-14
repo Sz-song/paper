@@ -10,7 +10,6 @@ import io.reactivex.schedulers.Schedulers;
 
 public class LoginPresenter extends BasePresenter<LoginContract.ILoginView> implements LoginContract.ILoginPresenter {
     private LoginContract.ILoginModel model;
-
     public LoginPresenter() {
         model=new LoginModel();
     }

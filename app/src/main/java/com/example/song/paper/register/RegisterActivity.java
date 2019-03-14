@@ -57,24 +57,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
             actionBar.setHomeAsUpIndicator(R.mipmap.back_black);
             actionBar.setDisplayShowTitleEnabled(false);
         }
-        Intent intent = getIntent();
-        String type = intent.getStringExtra("type");
-        if (type.equals("0")) {
-            title.setText("注册");
-        } else if (type.equals("1")) {
-            title.setText("忘记密码");
-        }
-    }
-
-    @Override
-    public void jumpActivity() {
-
-    }
-
-
-    @Override
-    protected void onEventDestroy() {
-
+        title.setText("注册");
     }
 
     @Override
@@ -88,12 +71,10 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
 
     @OnClick(R.id.getcode)
     public void onGetcodeClicked() {
-        Toast.makeText(this, "敬请期待", Toast.LENGTH_SHORT).show();
-        Intent  intent=new Intent(this,HomeActivity.class);
-        startActivity(intent);
+        presenter.getCode(username.getText().toString());
     }
     @OnClick(R.id.register)
     public void onRegisterClicked() {
-        Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show();
+        presenter.register(username.getText().toString(),password.getText().toString());
     }
 }

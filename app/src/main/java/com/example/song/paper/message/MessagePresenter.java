@@ -11,7 +11,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class MessagePresenter extends BasePresenter<MessageConstract.IMessageView> implements MessageConstract.IMessagePresenter {
-    private MessageModel model=new MessageModel();
+    private MessageConstract.IMessageModel model;
+
+    public MessagePresenter() {
+        model =new MessageModel();
+    }
+
     @Override
     public void getMessageData(String useraccountid,int page){
         model.getMessageData(useraccountid,page)

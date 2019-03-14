@@ -9,8 +9,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class MinePresenter extends BasePresenter<MineConstract.IMineView> implements MineConstract.IMinePresenter {
-        private MineModel model=new MineModel();
-        @Override
+        private MineConstract.IMineModel model;
+
+    public MinePresenter() {
+        model=new MineModel();
+    }
+
+    @Override
         public void getMineData(String uid) {
             model.getMineData(uid)
                     .subscribeOn(Schedulers.io())
