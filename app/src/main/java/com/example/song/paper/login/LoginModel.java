@@ -15,7 +15,7 @@ import okhttp3.RequestBody;
 
 public class LoginModel implements LoginContract.ILoginModel {
     private HttpService httpService;
-    public LoginModel(){httpService = HttpServiceInstance.getInstance();}
+    LoginModel(){httpService = HttpServiceInstance.getInstance();}
 
     @Override
     public Observable<BaseResponse<String>> login(String username, String password) {

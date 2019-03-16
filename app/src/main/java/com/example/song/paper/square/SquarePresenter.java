@@ -15,7 +15,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class SquarePresenter extends BasePresenter<SquareConstract.ISquareView> implements SquareConstract.ISquarePresenter {
-    private SquareModel model=new SquareModel();
+    private SquareConstract.ISquareModel model;
+
+    public SquarePresenter() {
+        model=new SquareModel();
+    }
+
     @Override
     public void initList(Context context,int page) {
         model.getSquareData(Sp.getString(context,AppConstant.Base_Url),page)

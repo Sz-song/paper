@@ -9,13 +9,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 import com.example.song.paper.R;
 import com.example.song.paper.home.homepage.HomepageFragment;
 import com.example.song.paper.message.MessageFragment;
 import com.example.song.paper.mine.MineFragment;
 import com.example.song.paper.square.SquareFragment;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
