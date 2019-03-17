@@ -13,6 +13,9 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface HttpService {
+    //用户注册
+    @POST("app_api/register.php")
+    Observable<BaseResponse<String>> register(@Body RequestBody body);
     //用户登录
     @POST("app_api/login.php")
     Observable<BaseResponse<String>> login(@Body RequestBody body);

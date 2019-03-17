@@ -1,6 +1,11 @@
 package com.example.song.paper.register;
 
+import com.example.song.paper.base.BaseObserver;
 import com.example.song.paper.base.BasePresenter;
+import com.example.song.paper.utils.ExceptionHandler;
+import com.example.song.paper.utils.HttpServiceInstance;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterView> implements RegisterContract.IRegisterPresenter {
     private RegisterContract.IRegisterModel model;
@@ -9,13 +14,31 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
     }
 
     @Override
-    public void register(String username, String password) {
-        model.register(username,password);
+    public void register(String username, String password,String validcode) {
+        model.register(username,password,validcode)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(new HttpServiceInstance.ErrorTransformer<String[]>())
+                .subscribe(new BaseObserver<String[]>() {
+                    @Override
+                    public void onNext(String[] strings) {view.registerSuccess();}
+                    @Override
+                    public void onError(ExceptionHandler.ResponeThrowable e) {view.registerFail(e); }
+                });
     }
 
     @Override
     public void getCode(String username) {
-
+        model.getCode(username)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(new HttpServiceInstance.ErrorTransformer<String[]>())
+                .subscribe(new BaseObserver<String[]>() {
+                    @Override
+                    public void onNext(String[] strings) {view.getCodeSuccess();}
+                    @Override
+                    public void onError(ExceptionHandler.ResponeThrowable e) {view.getCodeFail(e); }
+                });
     }
 
 }
