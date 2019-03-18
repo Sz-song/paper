@@ -1,6 +1,7 @@
 package com.example.song.paper.global;
 
 import com.example.song.paper.base.BaseResponse;
+import com.example.song.paper.home.homepage.HomePageBean;
 import com.example.song.paper.message.MessageBean;
 import com.example.song.paper.mine.MineBean;
 import com.example.song.paper.square.DynamicBean;
@@ -19,6 +20,9 @@ public interface HttpService {
     //用户登录
     @POST("app_api/login.php")
     Observable<BaseResponse<String>> login(@Body RequestBody body);
+    //获取首页数据
+    @POST("app_api/login.php")
+    Observable<BaseResponse<HomePageBean>> getHomePageData(@Body RequestBody body);
     //获取广场数据
     @POST("app_api/login.php")
     Observable<BaseResponse<List<DynamicBean>>> getSquareData(@Body RequestBody body);

@@ -1,24 +1,35 @@
 package com.example.song.paper.home.homepage;
 
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
+import com.example.song.paper.common.AuctionBean;
+import com.example.song.paper.utils.ExceptionHandler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomepageFragment extends BaseFragment<HomePagePresenter> {
+public class HomepageFragment extends BaseFragment<HomePagePresenter> implements HomePageConstract.IHomePageView {
 
     @BindView(R.id.portrait)
     CircleImageView portrait;
@@ -32,6 +43,11 @@ public class HomepageFragment extends BaseFragment<HomePagePresenter> {
     NavigationView navigation;
     @BindView(R.id.drawer)
     DrawerLayout drawer;
+    @BindView(R.id.swipe)
+    SwipeRefreshLayout swipe;
+    private List<AuctionBean> list;
+    private List<String> bannerimages;
+    private HomePageAdpter adpter;
 
     @Override
     public View initView(LayoutInflater inflater, @Nullable ViewGroup container) {
@@ -45,12 +61,42 @@ public class HomepageFragment extends BaseFragment<HomePagePresenter> {
 
     @Override
     public void initEvent(View view) {
-
+        list = new ArrayList<>();
+        bannerimages = new ArrayList<>();
+        GridLayoutManager manager = new GridLayoutManager(getContext(), 2);
+        manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (position == 0) {
+                    return 1;
+                } else return 2;
+            }
+        });
+        recycleview.setLayoutManager(manager);
+        adpter = new HomePageAdpter(getContext(), list, bannerimages);
+        recycleview.setAdapter(adpter);
     }
 
     @Override
     public void initData() {
-
+        swipe.setRefreshing(true);
+        presenter.getHomePageData();
+    }
+    @Override
+    public void getHomePageDataSuccess(HomePageBean bean) {
+        swipe.setRefreshing(false);
+        for(int i=0;i<bean.getBannerimages().size();i++){
+            bannerimages.addAll(bean.getBannerimages());
+        }
+        for(int i=0;i<bean.getList().size();i++){
+            list.addAll(bean.getList());
+        }
+        adpter.notifyDataSetChanged();
+    }
+    @Override
+    public void getHomePageDataFail(ExceptionHandler.ResponeThrowable e) {
+        swipe.setRefreshing(false);
+        Toast.makeText(getContext(), e.message, Toast.LENGTH_SHORT).show();
     }
     @OnClick({R.id.portrait, R.id.serach, R.id.filtrate})
     public void onViewClicked(View view) {
@@ -59,8 +105,10 @@ public class HomepageFragment extends BaseFragment<HomePagePresenter> {
                 drawer.openDrawer(GravityCompat.START);
                 break;
             case R.id.serach:
+                //TODO
                 break;
             case R.id.filtrate:
+                //TODO
                 break;
         }
     }

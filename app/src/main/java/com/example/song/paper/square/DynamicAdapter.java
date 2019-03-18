@@ -60,8 +60,7 @@ public class DynamicAdapter extends RecyclerView.Adapter {
             view = LayoutInflater.from(context).inflate(R.layout.cell_dynamic2, viewGroup, false);
             return new ViewHolder2(view);
         }else{
-            view = LayoutInflater.from(context).inflate(R.layout.cell_dynamic0, viewGroup, false);
-            return new ViewHolder0(view);
+            return null;
         }
     }
 
