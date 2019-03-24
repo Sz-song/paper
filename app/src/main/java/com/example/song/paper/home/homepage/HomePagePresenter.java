@@ -19,9 +19,9 @@ public class HomePagePresenter extends BasePresenter<HomePageConstract.IHomePage
                 .compose(new HttpServiceInstance.ErrorTransformer<HomePageBean>())
                 .subscribe(new BaseObserver<HomePageBean>() {
                     @Override
-                    public void onNext(HomePageBean homePageBean) {view.getHomePageDataSuccess(homePageBean); }
+                    public void onNext(HomePageBean homePageBean) {if(view!=null){view.getHomePageDataSuccess(homePageBean); }}
                     @Override
-                    public void onError(ExceptionHandler.ResponeThrowable e) {view.getHomePageDataFail(e);}
+                    public void onError(ExceptionHandler.ResponeThrowable e) {if(view!=null){view.getHomePageDataFail(e);}}
                 });
     }
 }

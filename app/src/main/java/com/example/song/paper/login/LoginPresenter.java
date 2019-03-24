@@ -19,20 +19,18 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView> impl
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new HttpServiceInstance.ErrorTransformer<String>())
-                .subscribe(new BaseObserver<String>() {
+                .subscribe(new BaseObserver<UserBean>() {
                     @Override
-                    public void onNext(String s) {
-                        L.e("s is:"+s);
+                    public void onNext(UserBean bean) {
                         if(view!=null) {
-                            view.showToast("登录成功");
-                            view.jumpActivity();
+                            view.loginSuccess(bean);
                         }
                     }
                     @Override
                     public void onError(ExceptionHandler.ResponeThrowable e) {
                         L.e(e.status+"  "+e.message);
                         if(view!=null) {
-                            view.showToast("登录失败" + e.message);
+                            view.loginFail(e);
                         }
                     }
                 });

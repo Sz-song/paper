@@ -18,7 +18,7 @@ public class LoginModel implements LoginContract.ILoginModel {
     LoginModel(){httpService = HttpServiceInstance.getInstance();}
 
     @Override
-    public Observable<BaseResponse<String>> login(String username, String password) {
+    public Observable<BaseResponse<UserBean>> login(String username, String password) {
         String timestamp = Md5Utils.getTimeStamp();
         String randomstr = Md5Utils.getRandomString(10);
         String signature = Md5Utils.getSignature(timestamp,randomstr);

@@ -12,4 +12,6 @@
     <string name="my_auction">我的拍卖</string>
     <string name="my_dynamic">我的动态</string>
     <string name="sys_setting">系统设置</string>
+    <string name="auction_zero">0元起拍</string>
+    <string name="auction_ruler">拍买须知</string>
 </resources>

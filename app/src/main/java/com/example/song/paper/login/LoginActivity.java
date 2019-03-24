@@ -9,10 +9,16 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseActivity;
 import com.example.song.paper.home.HomeActivity;
 import com.example.song.paper.register.RegisterActivity;
+import com.example.song.paper.utils.ExceptionHandler;
+import com.example.song.paper.utils.L;
+import com.example.song.paper.utils.Sp;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -74,16 +80,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 }
             }
         });
-    }
-    @Override
-    public void jumpActivity() {
-        Intent intent=new Intent(this,HomeActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void showToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        username.setText(Sp.getString(this,AppConstant.USER_NAME));
+        password.setText(Sp.getString(this,AppConstant.PASSWORD));
     }
 
     @OnClick({R.id.login, R.id.forget_password, R.id.register})
@@ -104,4 +102,20 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         }
     }
 
+    @Override
+    public void loginSuccess(UserBean bean) {
+        Sp.putString(this,AppConstant.UID,bean.getUseraccountid());
+        Sp.putString(this,AppConstant.USER_NAME,bean.getUsername());
+        Sp.putString(this,AppConstant.PETNAME,bean.getPetname());
+        Sp.putString(this,AppConstant.PEOPLE_FLAG,bean.getPeopleflag());
+        Sp.putString(this,AppConstant.PASSWORD,bean.getPassword());
+        Intent intent=new Intent(this,HomeActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void loginFail(ExceptionHandler.ResponeThrowable e) {
+        L.e(e.status+"  "+e.message);
+        Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show();
+    }
 }
