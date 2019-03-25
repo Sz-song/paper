@@ -7,7 +7,7 @@
     <com.donkingliang.banner.CustomBanner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="160dp"
         app:indicatorStyle="ORDINARY"
         app:indicatorGravity="CENTER"
         app:indicatorSelectRes="@drawable/banner_item_select"
@@ -16,110 +16,117 @@
     </com.donkingliang.banner.CustomBanner>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
-        <FrameLayout
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+        <LinearLayout
             android:id="@+id/zero_auction"
             android:layout_weight="2"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/zixingche"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal|bottom"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:textColor="@color/text_black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="@string/auction_zero"/>
-        </FrameLayout>
-        <FrameLayout
+        </LinearLayout>
+        <LinearLayout
             android:id="@+id/new_auction"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:orientation="vertical"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/zixingche"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal|bottom"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:textColor="@color/text_black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="@string/auction_zero"/>
-        </FrameLayout>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="100dp">
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/hot_auction"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:orientation="vertical"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/zixingche"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal|bottom"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:textColor="@color/text_black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="@string/auction_zero"/>
-        </FrameLayout>
-        <FrameLayout
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
             android:id="@+id/end_auction"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/zixingche"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal|bottom"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:textColor="@color/text_black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="@string/auction_zero"/>
-        </FrameLayout>
-        <FrameLayout
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
             android:id="@+id/ruler_auction"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/bg_ruler_auction"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal|bottom"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:textColor="@color/text_black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="@string/auction_ruler"/>
-        </FrameLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.donkingliang.banner.CustomBanner;
@@ -119,15 +120,15 @@ public class HomePageAdpter extends RecyclerView.Adapter {
         @BindView(R.id.banner)
         CustomBanner banner;
         @BindView(R.id.zero_auction)
-        FrameLayout zeroAuction;
+        LinearLayout zeroAuction;
         @BindView(R.id.new_auction)
-        FrameLayout newAuction;
+        LinearLayout newAuction;
         @BindView(R.id.hot_auction)
-        FrameLayout hotAuction;
+        LinearLayout hotAuction;
         @BindView(R.id.end_auction)
-        FrameLayout endAuction;
+        LinearLayout endAuction;
         @BindView(R.id.ruler_auction)
-        FrameLayout rulerAuction;
+        LinearLayout rulerAuction;
 
         ViewHolder0(View view) {
             super(view);
