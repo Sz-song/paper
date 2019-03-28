@@ -81,7 +81,7 @@ public class HomepageFragment extends BaseFragment<HomePagePresenter> implements
     public void initData() {
         swipe.setRefreshing(true);
         presenter.getHomePageData();
-        navigation.getHeaderView(R.id.nav_portrait).setBackgroundColor(getResources().getColor(R.color.gold));
+//        navigation.getHeaderView(R.id.nav_portrait).setBackgroundColor(getResources().getColor(R.color.gold));
     }
     @Override
     public void getHomePageDataSuccess(HomePageBean bean) {

@@ -25,7 +25,7 @@ public class MineModel implements MineConstract.IMineModel {
         map.put("timestamp",timestamp);
         map.put("randomstr",randomstr);
         map.put("signature",signature);
-        map.put("action","get_message_data");
+        map.put("action","get_mine_data");
         Map data = new HashMap();
         data.put("useraccountid",useraccountid);
         map.put("data",data);
