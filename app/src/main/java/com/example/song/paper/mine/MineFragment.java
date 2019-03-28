@@ -15,6 +15,8 @@ import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
 import com.example.song.paper.global.GlideApp;
+import com.example.song.paper.utils.ExceptionHandler;
+import com.example.song.paper.utils.L;
 import com.example.song.paper.utils.Sp;
 
 import butterknife.BindView;
@@ -70,21 +72,21 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void setMineData(MineBean bean, boolean success) {
+    public void getMineDataSuccess(MineBean bean) {
         swipe.setRefreshing(false);
-        if (success) {
-            GlideApp.with(getContext())
-                    .load(AppConstant.Base_Url+bean.getPortrait())
-                    .override(100,100)
-                    .placeholder(R.drawable.imageholder)
-                    .into(portrait);
-            name.setText(bean.getName());
-            introduce.setText(bean.getIntroduce());
-            myFans.setText("我的粉丝:"+bean.getFans_num());
-            myFocus.setText("我的关注:"+bean.getFocus_num());
-        } else {
-            Toast.makeText(getContext(), "数据请求失败是重试", Toast.LENGTH_SHORT).show();
-        }
+        GlideApp.with(getContext())
+                .load(AppConstant.Base_Url+bean.getPortrait())
+                .override(100,100)
+                .placeholder(R.drawable.imageholder)
+                .into(portrait);
+        name.setText(bean.getName());
+        introduce.setText(bean.getIntroduce());
+        myFans.setText("我的粉丝:"+bean.getFans_num());
+        myFocus.setText("我的关注:"+bean.getFocus_num());
+    }
+    @Override
+    public void getMineDataFail(ExceptionHandler.ResponeThrowable e) {
+        L.e(e.status+"  "+e.message);
     }
 
     @OnClick({R.id.portrait, R.id.my_fans, R.id.my_focus, R.id.my_auction, R.id.my_home, R.id.my_collect, R.id.sys_setting})

@@ -28,7 +28,6 @@ public class MineModel implements MineConstract.IMineModel {
         map.put("action","get_message_data");
         Map data = new HashMap();
         data.put("useraccountid",useraccountid);
-
         map.put("data",data);
         Gson gson=new Gson();
         String str=gson.toJson(map);
