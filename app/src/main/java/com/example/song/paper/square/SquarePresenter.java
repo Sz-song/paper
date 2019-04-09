@@ -23,7 +23,7 @@ public class SquarePresenter extends BasePresenter<SquareConstract.ISquareView> 
 
     @Override
     public void initList(Context context,int page) {
-        model.getSquareData(Sp.getString(context,AppConstant.Base_Url),page)
+        model.getSquareData(Sp.getString(context,AppConstant.UID),page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new HttpServiceInstance.ErrorTransformer<List<DynamicBean>>())
