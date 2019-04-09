@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
+import com.example.song.paper.utils.ExceptionHandler;
+import com.example.song.paper.utils.L;
+
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
@@ -66,37 +69,6 @@ public class SquareFragment extends BaseFragment<SquarePresenter> implements Squ
         presenter.initList(getContext(),page);
     }
 
-    @Override
-    public void updata(List<DynamicBean> beanList,boolean success) {
-        if(success){
-            list.addAll(beanList);
-            if(isAlive){
-                adapter.notifyItemRangeInserted(list.size() - beanList.size(),beanList.size());
-                swipe.setRefreshing(false);
-                if(beanList.size()>0){
-                    page++;
-                }
-                if (list.size() == 0) {
-                    nodataImg.setVisibility(View.VISIBLE);
-                    nodata.setVisibility(View.VISIBLE);
-                }else {
-                    nodataImg.setVisibility(View.GONE);
-                    nodata.setVisibility(View.GONE);
-                }
-            }
-        }else{
-            if(isAlive) {
-                swipe.setRefreshing(false);
-                if (list.size() == 0) {
-                    nodataImg.setVisibility(View.VISIBLE);
-                    nodata.setVisibility(View.VISIBLE);
-                } else {
-                    nodataImg.setVisibility(View.GONE);
-                    nodata.setVisibility(View.GONE);
-                }
-            }
-        }
-    }
     @OnClick({R.id.nodata_img, R.id.nodata})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -114,6 +86,39 @@ public class SquareFragment extends BaseFragment<SquarePresenter> implements Squ
                 adapter.notifyDataSetChanged();
                 presenter.initList(getContext(),page);
                 break;
+        }
+    }
+
+    @Override
+    public void initListSuccess(List<DynamicBean> dynamicBeans) {
+        list.addAll(dynamicBeans);
+        if (isAlive) {
+            adapter.notifyItemRangeInserted(list.size() - dynamicBeans.size(), dynamicBeans.size());
+            swipe.setRefreshing(false);
+            if (dynamicBeans.size() > 0) {
+                page++;
+            }
+            if (list.size() == 0) {
+                nodataImg.setVisibility(View.VISIBLE);
+                nodata.setVisibility(View.VISIBLE);
+            } else {
+                nodataImg.setVisibility(View.GONE);
+                nodata.setVisibility(View.GONE);
+            }
+        }
+    }
+    @Override
+    public void initListFail(ExceptionHandler.ResponeThrowable e) {
+        L.e(e.status+"  "+e.message);
+        if(isAlive) {
+            swipe.setRefreshing(false);
+            if (list.size() == 0) {
+                nodataImg.setVisibility(View.VISIBLE);
+                nodata.setVisibility(View.VISIBLE);
+            } else {
+                nodataImg.setVisibility(View.GONE);
+                nodata.setVisibility(View.GONE);
+            }
         }
     }
 }

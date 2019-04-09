@@ -30,11 +30,11 @@ public class SquarePresenter extends BasePresenter<SquareConstract.ISquareView> 
                 .subscribe(new BaseObserver<List<DynamicBean>>() {
                     @Override
                     public void onNext(List<DynamicBean> dynamicBeans) {
-                            view.updata(dynamicBeans,true);
+                        if(view!=null){ view.initListSuccess(dynamicBeans); }
                     }
                     @Override
                     public void onError(ExceptionHandler.ResponeThrowable e) {
-
+                        if(view!=null){ view.initListFail(e); }
                     }
                 });
     }

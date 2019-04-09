@@ -3,6 +3,7 @@ package com.example.song.paper.square;
 import android.content.Context;
 
 import com.example.song.paper.base.BaseResponse;
+import com.example.song.paper.utils.ExceptionHandler;
 
 import java.util.List;
 
@@ -14,7 +15,8 @@ public interface SquareConstract {
     }
 
     interface ISquareView{
-        void updata(List<DynamicBean> dynamicBeans,boolean success);
+        void initListSuccess(List<DynamicBean> dynamicBeans);
+        void initListFail(ExceptionHandler.ResponeThrowable e);
     }
 
     interface ISquarePresenter{
