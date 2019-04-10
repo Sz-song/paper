@@ -40,7 +40,7 @@ public class SquareFragment extends BaseFragment<SquarePresenter> implements Squ
     private List<DynamicBean> list;
     @Override
     protected View initView(LayoutInflater inflater, @Nullable ViewGroup container) {
-        return inflater.inflate(R.layout.layout_common, container, false);
+        return inflater.inflate(R.layout.common_layout, container, false);
     }
 
     @Override

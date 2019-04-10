@@ -1,6 +1,5 @@
 package com.example.song.paper.message;
 
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
@@ -43,7 +42,7 @@ public class MessageFragment extends BaseFragment<MessagePresenter> implements M
     private List<MessageBean> list;
     @Override
     protected View initView(LayoutInflater inflater, @Nullable ViewGroup container) {
-        return inflater.inflate(R.layout.layout_common, container, false);
+        return inflater.inflate(R.layout.common_layout, container, false);
     }
 
     @Override

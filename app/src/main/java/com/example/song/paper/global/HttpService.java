@@ -1,6 +1,7 @@
 package com.example.song.paper.global;
 
 import com.example.song.paper.base.BaseResponse;
+import com.example.song.paper.fansandfocus.FansAndFocusBean;
 import com.example.song.paper.home.homepage.HomePageBean;
 import com.example.song.paper.login.UserBean;
 import com.example.song.paper.message.MessageBean;
@@ -33,4 +34,7 @@ public interface HttpService {
     //获取我的数据
     @POST("app_api/mine.php")
     Observable<BaseResponse<MineBean>> getMineData(@Body RequestBody body);
+    //获取关注和粉丝
+    @POST("app_api/fans_and_focus.php")
+    Observable<BaseResponse<List<FansAndFocusBean>>> getFansAndFocusData(@Body RequestBody body);
 }
