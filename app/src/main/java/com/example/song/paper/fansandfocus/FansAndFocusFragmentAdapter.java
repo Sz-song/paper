@@ -17,7 +17,6 @@ public class FansAndFocusFragmentAdapter extends FragmentPagerAdapter {
         super(fm);
         this.userid=userid;
     }
-
     @Override
     public Fragment getItem(int position) {
         if (position==0){
@@ -38,7 +37,6 @@ public class FansAndFocusFragmentAdapter extends FragmentPagerAdapter {
         }
         return new FansAndFocusFragment();
     }
-
     @Override
     public int getCount() {
         return mTitles.length;
