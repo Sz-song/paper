@@ -38,9 +38,10 @@ public class FansAndFocusActivity extends AppCompatActivity {
             actionBar.setDisplayShowTitleEnabled(false);
         }
         toolbar.setPopupTheme(R.style.ThemeOverlay_AppCompat_Light);
-        title.setText("退款/售后");
+        title.setText("好友");
         int position = getIntent().getIntExtra("position", 0);
-        FansAndFocusFragmentAdapter adapter = new FansAndFocusFragmentAdapter(getSupportFragmentManager());
+        String userid=getIntent().getStringExtra("userid");
+        FansAndFocusFragmentAdapter adapter = new FansAndFocusFragmentAdapter(getSupportFragmentManager(),userid);
         viewPager.setAdapter(adapter);
         tablelayout.setupWithViewPager(viewPager);
         viewPager.setCurrentItem(position);

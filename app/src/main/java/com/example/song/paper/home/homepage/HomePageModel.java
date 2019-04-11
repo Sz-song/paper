@@ -26,7 +26,7 @@ public class HomePageModel implements HomePageConstract.IHomePageModel {
         map.put("timestamp",timestamp);
         map.put("randomstr",randomstr);
         map.put("signature",signature);
-        map.put("action","login");
+        map.put("action","get_home_data");
         Map data = new HashMap();
         map.put("data",data);
         Gson gson=new Gson();

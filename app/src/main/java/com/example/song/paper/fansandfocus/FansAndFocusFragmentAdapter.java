@@ -12,8 +12,10 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 public class FansAndFocusFragmentAdapter extends FragmentPagerAdapter {
     private String [] mTitles = new String[]{"关注","粉丝"};
-    public FansAndFocusFragmentAdapter(FragmentManager fm){
+    private String userid;
+    public FansAndFocusFragmentAdapter(FragmentManager fm,String userid){
         super(fm);
+        this.userid=userid;
     }
 
     @Override
@@ -22,6 +24,7 @@ public class FansAndFocusFragmentAdapter extends FragmentPagerAdapter {
             FansAndFocusFragment fragment1 =new FansAndFocusFragment();
             Bundle bundle=new Bundle();
             bundle.putInt("type",0);
+            bundle.putString("userid",userid);
             fragment1.setArguments(bundle);
             return fragment1;
         }
@@ -29,6 +32,7 @@ public class FansAndFocusFragmentAdapter extends FragmentPagerAdapter {
             FansAndFocusFragment fragment2 =new FansAndFocusFragment();
             Bundle bundle=new Bundle();
             bundle.putInt("type",1);
+            bundle.putString("userid",userid);
             fragment2.setArguments(bundle);
             return fragment2;
         }

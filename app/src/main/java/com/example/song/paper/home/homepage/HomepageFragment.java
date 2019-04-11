@@ -86,12 +86,8 @@ public class HomepageFragment extends BaseFragment<HomePagePresenter> implements
     @Override
     public void getHomePageDataSuccess(HomePageBean bean) {
         swipe.setRefreshing(false);
-        for(int i=0;i<bean.getBannerimages().size();i++){
-            bannerimages.addAll(bean.getBannerimages());
-        }
-        for(int i=0;i<bean.getList().size();i++){
-            list.addAll(bean.getList());
-        }
+        bannerimages.addAll(bean.getBannerimages());
+        list.addAll(bean.getList());
         adpter.notifyDataSetChanged();
     }
     @Override

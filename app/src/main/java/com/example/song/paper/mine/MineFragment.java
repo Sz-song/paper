@@ -1,6 +1,7 @@
 package com.example.song.paper.mine;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
+import com.example.song.paper.fansandfocus.FansAndFocusActivity;
 import com.example.song.paper.global.GlideApp;
 import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.L;
@@ -91,13 +93,22 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
 
     @OnClick({R.id.portrait, R.id.my_fans, R.id.my_focus, R.id.my_auction, R.id.my_home, R.id.my_collect, R.id.sys_setting})
     public void onViewClicked(View view) {
+        Intent intent;
         switch (view.getId()) {
             case R.id.portrait:
                 //Todo 我的页面跳转
                 break;
             case R.id.my_fans:
+                intent=new Intent(getContext(),FansAndFocusActivity.class);
+                intent.putExtra("position",1);
+                intent.putExtra("userid",Sp.getString(getContext(),AppConstant.UID));
+                startActivity(intent);
                 break;
             case R.id.my_focus:
+                intent=new Intent(getContext(),FansAndFocusActivity.class);
+                intent.putExtra("position",0);
+                intent.putExtra("userid",Sp.getString(getContext(),AppConstant.UID));
+                startActivity(intent);
                 break;
             case R.id.my_auction:
                 break;
