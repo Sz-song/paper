@@ -1,5 +1,6 @@
 package com.example.song.paper.home.homepage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
 import com.example.song.paper.common.AuctionBean;
+import com.example.song.paper.search.SearchActivity;
 import com.example.song.paper.utils.ExceptionHandler;
 
 import java.util.ArrayList;
@@ -102,7 +104,8 @@ public class HomepageFragment extends BaseFragment<HomePagePresenter> implements
                 drawer.openDrawer(GravityCompat.START);
                 break;
             case R.id.serach:
-                //TODO
+                Intent intent=new Intent(getContext(),SearchActivity.class);
+                getActivity().startActivity(intent);
                 break;
             case R.id.filtrate:
                 //TODO
