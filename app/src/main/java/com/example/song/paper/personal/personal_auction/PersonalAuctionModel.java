@@ -23,7 +23,7 @@ public class PersonalAuctionModel implements PersonalAuctionConstract.IPersonalA
     }
 
     @Override
-    public Observable<BaseResponse<List<AuctionBean>>> initList(String useraccountid, int page) {
+    public Observable<BaseResponse<List<AuctionBean>>> initList(String useraccountid,String userid, int page) {
         String timestamp = Md5Utils.getTimeStamp();
         String randomstr = Md5Utils.getRandomString(10);
         String signature = Md5Utils.getSignature(timestamp,randomstr);
@@ -33,6 +33,7 @@ public class PersonalAuctionModel implements PersonalAuctionConstract.IPersonalA
         map.put("signature",signature);
         map.put("action","personal_auction");
         Map data = new HashMap();
+        data.put("userid",userid);
         data.put("useraccountid",useraccountid);
         data.put("page",page);
         data.put("page_size",10);

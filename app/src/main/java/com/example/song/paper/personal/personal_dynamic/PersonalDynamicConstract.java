@@ -10,7 +10,7 @@ import io.reactivex.Observable;
 
 public interface PersonalDynamicConstract {
     interface IPersonalDynamicModel{
-        Observable<BaseResponse<List<DynamicBean>>> initList(String useraccountid, int page);
+        Observable<BaseResponse<List<DynamicBean>>> initList(String useraccountid,String userid, int page);
     }
 
     interface IPersonalDynamicView{
@@ -19,6 +19,6 @@ public interface PersonalDynamicConstract {
     }
 
     interface IPersonalDynamicPresenter{
-        void initList(String useraccountid, int page);
+        void initList(String useraccountid,String userid, int page);
     }
 }

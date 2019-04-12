@@ -50,7 +50,7 @@ public class PersonalCenterActivity extends BaseActivity<PersonalCenterPresenter
     Toolbar toolbar;
     @BindView(R.id.coll)
     CollapsingToolbarLayout coll;
-    @BindView(R.id.tabLayout)
+    @BindView(R.id.tablayout)
     XTabLayout tabLayout;
     @BindView(R.id.appbar)
     AppBarLayout appbar;
@@ -124,6 +124,23 @@ public class PersonalCenterActivity extends BaseActivity<PersonalCenterPresenter
         Toast.makeText(this, "获取个人信息失败", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void focusSuccess(Boolean b){
+        if(b){
+            Toast.makeText(this, "关注成功", Toast.LENGTH_SHORT).show();
+            focus.setText("已关注");
+        }else{
+            Toast.makeText(this, "取关成功", Toast.LENGTH_SHORT).show();
+            focus.setText("＋关注");
+        }
+    }
+
+    @Override
+    public void focusFail(ExceptionHandler.ResponeThrowable e) {
+        L.e(e.status + "   " + e.message);
+        Toast.makeText(this, "操作失败", Toast.LENGTH_SHORT).show();
+    }
+
     @OnClick({R.id.title_image, R.id.focus, R.id.contact,R.id.focus_num, R.id.fans_num})
     public void onViewClicked(View view) {
         Intent intent;
@@ -131,6 +148,7 @@ public class PersonalCenterActivity extends BaseActivity<PersonalCenterPresenter
             case R.id.title_image:
                 break;
             case R.id.focus:
+                presenter.focus(Sp.getString(this, AppConstant.UID), userid);
                 break;
             case R.id.contact:
                 break;

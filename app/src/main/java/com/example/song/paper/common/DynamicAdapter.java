@@ -137,9 +137,9 @@ public class DynamicAdapter extends RecyclerView.Adapter {
             }
             GridLayoutManager manager = new GridLayoutManager(context, 3){
                 @Override
-                public boolean canScrollVertically() {
-                    return false;
-                }
+                public boolean canScrollVertically() {return false;}
+                @Override
+                public boolean canScrollHorizontally() {return false;}
             };
             ((ViewHolder2) holder).recyclerview.setLayoutManager(manager);
             GridImageViewAdapter adapter = new GridImageViewAdapter (context, list.get(position).getImages());

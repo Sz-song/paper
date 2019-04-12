@@ -37,4 +37,22 @@ public class PersonalCenterPresenter extends BasePresenter<PersonalCenterConstra
                     }
                 });
     }
+
+    @Override
+    public void focus(String useraccountid, String userid) {
+        model.focus(useraccountid,userid)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(new HttpServiceInstance.ErrorTransformer<Boolean>())
+                .subscribe(new BaseObserver<Boolean>() {
+                    @Override
+                    public void onNext(Boolean s) {
+                        if(view!=null){ view.focusSuccess(s); }
+                    }
+                    @Override
+                    public void onError(ExceptionHandler.ResponeThrowable e) {
+                        if(view!=null){ view.focusFail(e); }
+                    }
+                });
+    }
 }

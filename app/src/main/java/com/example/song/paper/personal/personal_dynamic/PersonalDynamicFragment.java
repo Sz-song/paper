@@ -10,12 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
 import com.example.song.paper.common.DynamicAdapter;
 import com.example.song.paper.common.DynamicBean;
 import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.L;
+import com.example.song.paper.utils.Sp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +61,7 @@ public class PersonalDynamicFragment extends BaseFragment<PersonalDynamicPresent
 
     @Override
     protected void initData() {
-        presenter.initList(userid,page);
+        presenter.initList(Sp.getString(getContext(),AppConstant.UID),userid,page);
     }
 
     @Override

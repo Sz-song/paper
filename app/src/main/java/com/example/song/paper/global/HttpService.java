@@ -45,4 +45,10 @@ public interface HttpService {
     //获取个人中心拍卖
     @POST("app_api/personal_auction.php")
     Observable<BaseResponse<List<AuctionBean>>> getPersonalAuctionData(@Body RequestBody body);
+    //获取个人中心动态
+    @POST("app_api/personal_dynamic.php")
+    Observable<BaseResponse<List<DynamicBean>>> getPersonalDynamicData(@Body RequestBody body);
+    //关注
+    @POST("app_api/focus.php")
+    Observable<BaseResponse<Boolean>> focus(@Body RequestBody body);
 }

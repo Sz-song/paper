@@ -6,14 +6,14 @@ package com.example.song.paper.fansandfocus;
  * Time: 21:08
  */
 public class FansAndFocusBean {
-    private int id;
+    private String id;
     private String name;
     private String portrait;
     private String txt;
     private int isfocus;
     private int fans_num;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

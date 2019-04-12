@@ -21,8 +21,8 @@ public class PersonalAuctionPresenter extends BasePresenter<PersonalAuctionConst
     }
 
     @Override
-    public void initList(String useraccountid, int page) {
-        model.initList(useraccountid,page)
+    public void initList(String useraccountid,String userid, int page) {
+        model.initList(useraccountid,userid,page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new HttpServiceInstance.ErrorTransformer<List<AuctionBean>>())

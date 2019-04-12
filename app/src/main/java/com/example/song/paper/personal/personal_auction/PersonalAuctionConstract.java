@@ -11,7 +11,7 @@ import io.reactivex.Observable;
 
 public interface PersonalAuctionConstract {
     interface IPersonalAuctionModel{
-        Observable<BaseResponse<List<AuctionBean>>> initList(String useraccountid, int page);
+        Observable<BaseResponse<List<AuctionBean>>> initList(String useraccountid,String userid, int page);
     }
 
     interface IPersonalAuctionView{
@@ -20,6 +20,6 @@ public interface PersonalAuctionConstract {
     }
 
     interface IPersonalAuctionPresenter{
-        void initList(String useraccountid, int page);
+        void initList(String useraccountid,String userid, int page);
     }
 }
