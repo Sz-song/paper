@@ -1,4 +1,4 @@
-package com.example.song.paper.square;
+package com.example.song.paper.common;
 
 import java.util.List;
 

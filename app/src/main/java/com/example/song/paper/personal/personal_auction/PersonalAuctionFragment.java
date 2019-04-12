@@ -13,7 +13,7 @@ import com.example.song.paper.utils.ExceptionHandler;
 
 import java.util.List;
 
-public class PersonalAuctionFragment extends BaseFragment implements PersonalAuctionConstract.IPersonalDynamicView {
+public class PersonalAuctionFragment extends BaseFragment implements PersonalAuctionConstract.IPersonalAuctionView {
     @Override
     protected View initView(LayoutInflater inflater, @Nullable ViewGroup container) {
         return inflater.inflate(R.layout.common_fragment, container, false);

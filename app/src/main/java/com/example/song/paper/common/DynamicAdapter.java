@@ -1,4 +1,4 @@
-package com.example.song.paper.square;
+package com.example.song.paper.common;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
+import com.example.song.paper.common.DynamicBean;
 import com.example.song.paper.common.GridImageViewAdapter;
 import com.example.song.paper.global.GlideApp;
 import com.example.song.paper.utils.ParseUtils;
@@ -24,7 +25,7 @@ public class DynamicAdapter extends RecyclerView.Adapter {
     private Context context;
     private List<DynamicBean> list;
 
-    DynamicAdapter(Context context, List<DynamicBean> list) {
+    public DynamicAdapter(Context context, List<DynamicBean> list) {
         this.context = context;
         this.list = list;
     }

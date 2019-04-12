@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
+import com.example.song.paper.common.DynamicAdapter;
+import com.example.song.paper.common.DynamicBean;
 import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.L;
 

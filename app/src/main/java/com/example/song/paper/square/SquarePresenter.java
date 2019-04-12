@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.song.paper.AppConstant;
 import com.example.song.paper.base.BaseObserver;
 import com.example.song.paper.base.BasePresenter;
+import com.example.song.paper.common.DynamicBean;
 import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.HttpServiceInstance;
 import com.example.song.paper.utils.Sp;

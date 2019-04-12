@@ -1,13 +1,14 @@
 package com.example.song.paper.global;
 
 import com.example.song.paper.base.BaseResponse;
+import com.example.song.paper.common.AuctionBean;
 import com.example.song.paper.fansandfocus.FansAndFocusBean;
 import com.example.song.paper.home.homepage.HomePageBean;
 import com.example.song.paper.login.UserBean;
 import com.example.song.paper.message.MessageBean;
 import com.example.song.paper.mine.MineBean;
 import com.example.song.paper.personal.personal_center.PersonCenterBean;
-import com.example.song.paper.square.DynamicBean;
+import com.example.song.paper.common.DynamicBean;
 
 import java.util.List;
 
@@ -41,4 +42,7 @@ public interface HttpService {
     //获取个人中心信息
     @POST("app_api/personal_info.php")
     Observable<BaseResponse<PersonCenterBean>> getPersonalCenterData(@Body RequestBody body);
+    //获取个人中心拍卖
+    @POST("app_api/personal_auction.php")
+    Observable<BaseResponse<List<AuctionBean>>> getPersonalAuctionData(@Body RequestBody body);
 }

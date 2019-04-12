@@ -12,7 +12,7 @@ public class PersonalDynamicPresenter extends BasePresenter<PersonalDynamicConst
     }
 
     @Override
-    public void initList(Context context, int page) {
+    public void initList(String useraccountid, int page) {
 
     }
 }

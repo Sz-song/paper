@@ -1,6 +1,7 @@
 package com.example.song.paper.square;
 
 import com.example.song.paper.base.BaseResponse;
+import com.example.song.paper.common.DynamicBean;
 import com.example.song.paper.global.HttpService;
 import com.example.song.paper.utils.HttpServiceInstance;
 import com.example.song.paper.utils.L;
@@ -19,7 +20,7 @@ public class SquareModel implements SquareConstract.ISquareModel {
     public SquareModel(){httpService = HttpServiceInstance.getInstance();}
 
     @Override
-    public Observable<BaseResponse<List<DynamicBean>>> getSquareData(String useraccountid,int page) {
+    public Observable<BaseResponse<List<DynamicBean>>> getSquareData(String useraccountid, int page) {
         String timestamp = Md5Utils.getTimeStamp();
         String randomstr = Md5Utils.getRandomString(10);
         String signature = Md5Utils.getSignature(timestamp,randomstr);

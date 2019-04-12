@@ -3,6 +3,7 @@ package com.example.song.paper.square;
 import android.content.Context;
 
 import com.example.song.paper.base.BaseResponse;
+import com.example.song.paper.common.DynamicBean;
 import com.example.song.paper.utils.ExceptionHandler;
 
 import java.util.List;

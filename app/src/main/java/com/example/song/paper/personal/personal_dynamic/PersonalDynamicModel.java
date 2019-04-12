@@ -2,7 +2,7 @@ package com.example.song.paper.personal.personal_dynamic;
 
 import com.example.song.paper.base.BaseResponse;
 import com.example.song.paper.global.HttpService;
-import com.example.song.paper.square.DynamicBean;
+import com.example.song.paper.common.DynamicBean;
 import com.example.song.paper.utils.HttpServiceInstance;
 
 import java.util.List;
