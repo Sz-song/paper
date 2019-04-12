@@ -17,6 +17,7 @@ import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
 import com.example.song.paper.fansandfocus.FansAndFocusActivity;
 import com.example.song.paper.global.GlideApp;
+import com.example.song.paper.personal.personal_center.PersonalCenterActivity;
 import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.L;
 import com.example.song.paper.utils.Sp;
@@ -96,7 +97,9 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
         Intent intent;
         switch (view.getId()) {
             case R.id.portrait:
-                //Todo 我的页面跳转
+                intent=new Intent(getContext(),PersonalCenterActivity.class);
+                intent.putExtra("userid",Sp.getString(getContext(),AppConstant.UID));
+                startActivity(intent);
                 break;
             case R.id.my_fans:
                 intent=new Intent(getContext(),FansAndFocusActivity.class);
@@ -111,6 +114,10 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
                 startActivity(intent);
                 break;
             case R.id.my_auction:
+                intent=new Intent(getContext(),PersonalCenterActivity.class);
+                intent.putExtra("position",1);
+                intent.putExtra("userid",Sp.getString(getContext(),AppConstant.UID));
+                startActivity(intent);
                 break;
             case R.id.my_home:
                 break;

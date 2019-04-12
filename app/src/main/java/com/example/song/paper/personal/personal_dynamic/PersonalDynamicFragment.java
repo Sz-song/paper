@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
 import com.example.song.paper.base.BasePresenter;
 import com.example.song.paper.square.DynamicBean;
@@ -15,12 +16,12 @@ import java.util.List;
 public class PersonalDynamicFragment extends BaseFragment implements PersonalDynamicConstract.IPersonalDynamicView {
     @Override
     protected View initView(LayoutInflater inflater, @Nullable ViewGroup container) {
-        return null;
+        return inflater.inflate(R.layout.common_fragment, container, false);
     }
 
     @Override
     protected BasePresenter initPresent() {
-        return null;
+        return new PersonalDynamicPresenter();
     }
 
     @Override

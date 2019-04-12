@@ -8,27 +8,29 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.song.paper.personal.personal_auction.PersonalAuctionFragment;
 import com.example.song.paper.personal.personal_dynamic.PersonalDynamicFragment;
 
-public class PerosnalFragmentAdpter extends FragmentPagerAdapter {
+public class PersonalFragmentAdapter extends FragmentPagerAdapter {
     private String [] mTitles = new String[]{"动态","拍卖"};
+    private String userid;
 
-    public PerosnalFragmentAdpter(FragmentManager fm) {
+    public PersonalFragmentAdapter(FragmentManager fm, String userid) {
         super(fm);
+        this.userid = userid;
     }
 
     @Override
     public Fragment getItem(int position) {
         if (position==0){
-            PersonalAuctionFragment fragment0=new PersonalAuctionFragment();
+            PersonalDynamicFragment fragment0=new PersonalDynamicFragment();
             Bundle bundle=new Bundle();
-            bundle.putInt("type",1);
+            bundle.putString("userid",userid);
             fragment0.setArguments(bundle);
             return fragment0;
         }else if (position==1){
-            PersonalDynamicFragment fragment0=new PersonalDynamicFragment();
+            PersonalAuctionFragment fragment1=new PersonalAuctionFragment();
             Bundle bundle=new Bundle();
-            bundle.putInt("type",2);
-            fragment0.setArguments(bundle);
-            return fragment0;
+            bundle.putString("userid",userid);
+            fragment1.setArguments(bundle);
+            return fragment1;
         }
         return null;
     }

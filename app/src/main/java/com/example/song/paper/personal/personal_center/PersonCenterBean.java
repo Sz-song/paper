@@ -7,7 +7,7 @@ public class PersonCenterBean {
     private String introduce;//简介内容
     private String fans_num;//粉丝数量
     private String focus_num;//关注数量
-
+    private boolean isfocus;
     public String getUseraccountid() {
         return useraccountid;
     }
@@ -30,5 +30,9 @@ public class PersonCenterBean {
 
     public String getFocus_num() {
         return focus_num;
+    }
+
+    public boolean isIsfocus() {
+        return isfocus;
     }
 }

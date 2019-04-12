@@ -32,7 +32,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".home.HomeActivity" />
         <activity android:name=".fansandfocus.FansAndFocusActivity" />
-        <activity android:name=".personal.personal_center.PersonalCenterActivity"></activity>
+        <activity android:name=".personal.personal_center.PersonalCenterActivity"/>
+        <activity android:name=".search.SearchActivity"/>
     </application>
 
 </manifest>

@@ -40,5 +40,5 @@ public interface HttpService {
     Observable<BaseResponse<List<FansAndFocusBean>>> getFansAndFocusData(@Body RequestBody body);
     //获取个人中心信息
     @POST("app_api/personal_info.php")
-    Observable<BaseResponse<PersonCenterBean>> getPersonalCenterData(RequestBody body);
+    Observable<BaseResponse<PersonCenterBean>> getPersonalCenterData(@Body RequestBody body);
 }

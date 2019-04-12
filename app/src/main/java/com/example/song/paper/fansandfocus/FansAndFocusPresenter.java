@@ -10,6 +10,6 @@ import com.example.song.paper.base.BasePresenter;
 public class FansAndFocusPresenter extends BasePresenter<FansAndFocusConstract.IFansAndFocusView> implements FansAndFocusConstract.IFansAndFocusPresenter {
     @Override
     public void initList(String useraccountid, int type, int page) {
-
+        //Todo
     }
 }
