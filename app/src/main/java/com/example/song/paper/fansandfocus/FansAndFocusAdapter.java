@@ -1,6 +1,7 @@
 package com.example.song.paper.fansandfocus;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
 import com.example.song.paper.global.GlideApp;
+import com.example.song.paper.personal.personal_center.PersonalCenterActivity;
+import com.example.song.paper.utils.Sp;
+
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,7 +60,9 @@ public class FansAndFocusAdapter extends RecyclerView.Adapter<FansAndFocusAdapte
          //TODO
         });
         holder.item.setOnClickListener(view ->{
-            //TODO
+            Intent intent=new Intent(context,PersonalCenterActivity.class);
+            intent.putExtra("userid",list.get(position).getId());
+            context.startActivity(intent);
         });
     }
 

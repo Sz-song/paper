@@ -31,7 +31,7 @@ public class FansAndsFocusModel implements FansAndFocusConstract.IFanAndsFocusMo
         map.put("timestamp",timestamp);
         map.put("randomstr",randomstr);
         map.put("signature",signature);
-        map.put("action","get_square_data");
+        map.put("action","fans_and_focus");
         Map data = new HashMap();
         data.put("useraccountid",useraccountid);
         data.put("type",type);
