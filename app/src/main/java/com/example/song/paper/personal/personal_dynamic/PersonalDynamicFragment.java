@@ -15,6 +15,7 @@ import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
 import com.example.song.paper.common.DynamicAdapter;
 import com.example.song.paper.common.DynamicBean;
+import com.example.song.paper.global.GlideApp;
 import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.L;
 import com.example.song.paper.utils.Sp;
@@ -57,6 +58,12 @@ public class PersonalDynamicFragment extends BaseFragment<PersonalDynamicPresent
         recyclerview.setLayoutManager(manager);
         adapter = new DynamicAdapter(getContext(), list);
         recyclerview.setAdapter(adapter);
+        swipe.setColorSchemeResources(R.color.gold);
+        GlideApp.with(getActivity())
+                .load(R.drawable.nodata)
+                .override(nodataImg.getWidth(), nodataImg.getHeight())
+                .into(nodataImg);
+        nodata.setText("暂时没有数据");
     }
 
     @Override
