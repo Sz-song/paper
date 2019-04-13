@@ -21,4 +21,9 @@
         <item name="android:backgroundDimEnabled">false</item>
         <!-- 设置屏幕变暗 -->
     </style>
+    <!--PopupWindow-->
+    <style name="dialogAnimStyle">
+        <item name="android:windowEnterAnimation">@anim/photo_dialog_in_anim</item>
+        <item name="android:windowExitAnimation">@anim/photo_dialog_out_anim</item>
+    </style>
 </resources>

@@ -34,6 +34,8 @@
         <activity android:name=".fansandfocus.FansAndFocusActivity" />
         <activity android:name=".personal.personal_center.PersonalCenterActivity"/>
         <activity android:name=".search.SearchActivity"/>
+        <activity android:name=".release.release_auction.ReleaseAuctionActivity" />
+        <activity android:name=".release.release_dynamic.ReleaseDynamicActivity" />
     </application>
 
 </manifest>
