@@ -10,7 +10,7 @@ import io.reactivex.Observable;
 
 public interface SearchConstract {
     interface ISearchModel{
-        Observable<BaseResponse<List<AuctionBean>>> getSearchData(String useraccountid, String query);
+        Observable<BaseResponse<List<AuctionBean>>> getSearchData(String useraccountid, String query,int page);
     }
 
     interface ISearchView{
@@ -19,6 +19,6 @@ public interface SearchConstract {
     }
 
     interface ISearchPresenter{
-        void getSearchData(String useraccountid,String query);
+        void getSearchData(String useraccountid,String query,int page);
     }
 }

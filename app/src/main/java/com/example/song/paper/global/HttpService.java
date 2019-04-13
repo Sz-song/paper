@@ -51,4 +51,7 @@ public interface HttpService {
     //关注
     @POST("app_api/focus.php")
     Observable<BaseResponse<Boolean>> focus(@Body RequestBody body);
+    //搜索
+    @POST("app_api/search.php")
+    Observable<BaseResponse<List<AuctionBean>>> search(@Body RequestBody body);
 }

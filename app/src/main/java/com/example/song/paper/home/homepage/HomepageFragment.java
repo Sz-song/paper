@@ -97,6 +97,7 @@ public class HomepageFragment extends BaseFragment<HomePagePresenter> implements
         swipe.setRefreshing(false);
         Toast.makeText(getContext(), e.message, Toast.LENGTH_SHORT).show();
     }
+
     @OnClick({R.id.portrait, R.id.serach, R.id.filtrate})
     public void onViewClicked(View view) {
         switch (view.getId()) {
