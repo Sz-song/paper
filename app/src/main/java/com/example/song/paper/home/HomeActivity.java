@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import com.example.song.paper.R;
 import com.example.song.paper.home.homepage.HomepageFragment;
 import com.example.song.paper.message.MessageFragment;
 import com.example.song.paper.mine.MineFragment;
+import com.example.song.paper.release.ReleasePopupwindow;
 import com.example.song.paper.square.SquareFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -108,7 +110,8 @@ public class HomeActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
                 break;
             case R.id.fabu:
-                Toast.makeText(HomeActivity.this, "发布", Toast.LENGTH_SHORT).show();
+                ReleasePopupwindow popupwindow=new ReleasePopupwindow(this);
+                popupwindow.showAtLocation(fabu,Gravity.BOTTOM,0,0);
                 break;
             case R.id.message:
                 setPicDark();

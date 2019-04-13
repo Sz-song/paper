@@ -2,6 +2,53 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/release_auction"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_marginTop="60dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/auction"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_black"
+            android:layout_marginBottom="60dp"
+            android:text="@string/release_auction"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/release_dynamic"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_marginTop="60dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/dynamic"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_black"
+            android:layout_marginBottom="60dp"
+            android:text="@string/release_dynamic"/>
+    </LinearLayout>
 </LinearLayout>
