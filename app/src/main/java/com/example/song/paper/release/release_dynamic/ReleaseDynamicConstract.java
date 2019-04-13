@@ -21,8 +21,8 @@ public interface ReleaseDynamicConstract {
     }
 
     interface IReleaseDynamicView{
-        void initListSuccess(Boolean b);
-        void initListFail(ExceptionHandler.ResponeThrowable e);
+        void ReleaseAuctionSuccess(Boolean b);
+        void ReleaseAuctionFail(ExceptionHandler.ResponeThrowable e);
     }
 
     interface IReleaseDynamicPresenter{

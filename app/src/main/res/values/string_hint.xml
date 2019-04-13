@@ -6,4 +6,5 @@
     <string name="re_password">请再次输入密码</string>
     <string name="validcode">请输入验证码</string>
     <string name="petname">请输入昵称</string>
+    <string name="share_story">分享你的故事...</string>
 </resources>

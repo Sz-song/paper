@@ -1,5 +1,6 @@
 package com.example.song.paper.release.release_auction;
 
+import com.example.song.paper.R;
 import com.example.song.paper.base.BaseActivity;
 import com.example.song.paper.utils.ExceptionHandler;
 
@@ -11,12 +12,12 @@ import com.example.song.paper.utils.ExceptionHandler;
 public class ReleaseAuctionActivity extends BaseActivity<ReleaseAuctionPresenter> implements ReleaseAuctionConstract.IReleaseDynamicView {
     @Override
     protected int getLayout() {
-        return 0;
+        return R.layout.release_auction;
     }
 
     @Override
     protected ReleaseAuctionPresenter initPresent() {
-        return null;
+        return new ReleaseAuctionPresenter();
     }
 
     @Override
