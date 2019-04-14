@@ -5,14 +5,22 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseActivity;
 import com.example.song.paper.common.AuctionBean;
+import com.example.song.paper.common.LoadingDialog;
+import com.example.song.paper.common.ViewPagerAdapter;
 import com.example.song.paper.utils.ExceptionHandler;
+import com.example.song.paper.utils.L;
+import com.example.song.paper.utils.Sp;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,15 +53,13 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
     TextView priceStart;
     @BindView(R.id.price_now)
     TextView priceNow;
-    @BindView(R.id.price_add)
-    TextView priceAdd;
-    @BindView(R.id.my_price)
-    TextView myPrice;
     @BindView(R.id.submit)
     TextView submit;
     @BindView(R.id.relat)
     CoordinatorLayout relat;
-
+    private String id;
+    private LoadingDialog dialog;
+    private ViewPagerAdapter pagerAdapter;
     @Override
     protected int getLayout() {
         return R.layout.activity_auction_detail;
@@ -67,19 +73,61 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
     @Override
     protected void initEvent() {
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.mipmap.back_black);
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
+        dialog=new LoadingDialog(this);
+        id=getIntent().getStringExtra("id");
+        dialog.show();
+        presenter.getAuctionDetailData(Sp.getString(this,AppConstant.UID),id);
     }
 
     @Override
     public void getAuctionDetailDataSuccess(AuctionBean bean) {
+        dialog.dismiss();
+        pagerAdapter = new ViewPagerAdapter(this, bean.getImages());
+        viewpage.setAdapter(pagerAdapter);
+        name.setText(bean.getName());
+        time.setText(getTime(bean.getTime_start(),bean.getTime_end(),bean.getTime_now()));
+        imgNum.setText("1/"+bean.getImages().size());
+        priceStart.setText(bean.getPrice_start());
+        priceNow.setText(bean.getPrice_now());
 
     }
 
     @Override
     public void getAuctionDetailDataFail(ExceptionHandler.ResponeThrowable e) {
+        dialog.dismiss();
+        L.e(e.status+"  "+e.message);
+        Toast.makeText(this, "获取数据失败", Toast.LENGTH_SHORT).show();
+    }
 
+    private String getTime(long time_start, long time_end,long time_now) {
+        if (time_start * 1000 > time_now) {
+            return ((time_start * 1000) - time_now) / (1000 * 60 * 60) + "小时" + (((time_start * 1000) - time_now) % (1000 * 60 * 60)) / (1000 * 60) + "分后开始";
+        } else if (time_start * 1000 < time_now && time_end * 1000 > time_now) {
+            return ((time_end * 1000) - time_now) / (1000 * 60 * 60) + "小时" + (((time_end * 1000) - time_now) % (1000 * 60 * 60)) / (1000 * 60) + "分后结束";
+        } else {
+            return "拍卖已结束";
+        }
     }
 
     @OnClick(R.id.submit)
     public void onViewClicked() {
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
+    }
+
 }
