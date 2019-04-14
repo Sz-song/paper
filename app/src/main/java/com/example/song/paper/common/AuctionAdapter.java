@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.donkingliang.imageselector.view.SquareImageView;
+import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
 import com.example.song.paper.global.GlideApp;
 
@@ -35,7 +36,7 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         GlideApp.with(context)
-                .load(list.get(position).getImage())
+                .load(AppConstant.Base_Url+list.get(position).getImage())
                 .placeholder(R.drawable.imageholder)
                 .override(200,200)
                 .into(holder.image);
