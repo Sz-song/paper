@@ -1,6 +1,7 @@
 package com.example.song.paper.common;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.donkingliang.imageselector.view.SquareImageView;
 import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
+import com.example.song.paper.auction.AuctionDetailActivity;
 import com.example.song.paper.global.GlideApp;
 
 import java.util.List;
@@ -45,7 +47,9 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
         holder.time.setText(list.get(position).getId());
         holder.numAuction.setText(list.get(position).getName());
         holder.itemView.setOnClickListener(v -> {
-            //TODO 跳转
+            Intent intent=new Intent(context,AuctionDetailActivity.class);
+            intent.putExtra("id",list.get(position).getId());
+            context.startActivity(intent);
         });
     }
 

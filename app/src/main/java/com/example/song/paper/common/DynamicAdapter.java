@@ -15,6 +15,7 @@ import com.example.song.paper.R;
 import com.example.song.paper.common.DynamicBean;
 import com.example.song.paper.common.GridImageViewAdapter;
 import com.example.song.paper.global.GlideApp;
+import com.example.song.paper.utils.L;
 import com.example.song.paper.utils.ParseUtils;
 import java.util.List;
 import butterknife.BindView;

@@ -6,6 +6,7 @@ import com.example.song.paper.base.BaseResponse;
 import com.example.song.paper.common.AuctionBean;
 import com.example.song.paper.utils.ExceptionHandler;
 
+import java.io.File;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -18,14 +19,19 @@ import io.reactivex.Observable;
 public interface ReleaseAuctionConstract {
     interface IReleaseDynamicModel{
         Observable<BaseResponse<Boolean>> ReleaseDynamic(AuctionBean bean);
+        Observable<BaseResponse<List<String>>> UploadImage(List<File> images);
     }
 
     interface IReleaseDynamicView{
         void ReleaseDynamicSuccess(Boolean b);
         void ReleaseDynamicFail(ExceptionHandler.ResponeThrowable e);
+
+        void UploadImageSuccess(List<String> images);
+        void UploadImageFail(ExceptionHandler.ResponeThrowable e);
     }
 
     interface IReleaseDynamicPresenter{
         void ReleaseDynamic(AuctionBean bean);
+        void UploadImage(List<File> images);
     }
 }

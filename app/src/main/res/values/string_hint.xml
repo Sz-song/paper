@@ -7,4 +7,6 @@
     <string name="validcode">请输入验证码</string>
     <string name="petname">请输入昵称</string>
     <string name="share_story">分享你的故事...</string>
+    <string name="name">请输入拍品名字</string>
+    <string name="price_auction_start">请输入起拍价格</string>
 </resources>

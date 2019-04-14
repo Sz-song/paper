@@ -2,16 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.song.paper">
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 储存卡的读写权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 调用相机权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
-
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
         android:name=".MyApplication"
@@ -47,12 +53,11 @@
         <activity android:name="com.donkingliang.imageselector.PreviewActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
-
         <!-- 图片剪切Activity -->
         <activity
             android:name="com.donkingliang.imageselector.ClipImageActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
+        <activity android:name=".auction.AuctionDetailActivity" />
         <!-- Android 7.0 文件共享配置，必须配置 -->
         <provider
             android:name="android.support.v4.content.FileProvider"

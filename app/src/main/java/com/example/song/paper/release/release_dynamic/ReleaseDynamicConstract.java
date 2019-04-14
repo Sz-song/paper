@@ -5,7 +5,9 @@ import android.content.Context;
 import com.example.song.paper.base.BaseResponse;
 import com.example.song.paper.common.DynamicBean;
 import com.example.song.paper.utils.ExceptionHandler;
+import com.example.song.paper.utils.Sp;
 
+import java.io.File;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -17,15 +19,20 @@ import io.reactivex.Observable;
  */
 public interface ReleaseDynamicConstract {
     interface IReleaseDynamicModel{
-        Observable<BaseResponse<Boolean>> ReleaseAuction(DynamicBean bean);
+        Observable<BaseResponse<Boolean>> ReleaseDynamic(String useraccountid,String content,List<String> list);
+        Observable<BaseResponse<List<String>>> UploadImage(List<File> images);
     }
 
     interface IReleaseDynamicView{
-        void ReleaseAuctionSuccess(Boolean b);
-        void ReleaseAuctionFail(ExceptionHandler.ResponeThrowable e);
+        void ReleaseDynamicSuccess(Boolean b);
+        void ReleaseDynamicFail(ExceptionHandler.ResponeThrowable e);
+
+        void UploadImageSuccess(List<String> images);
+        void UploadImageFail(ExceptionHandler.ResponeThrowable e);
     }
 
     interface IReleaseDynamicPresenter{
-        void ReleaseAuction(DynamicBean bean);
+        void ReleaseDynamic(String useraccountid,String content,List<String> list);
+        void UploadImage(List<File> images);
     }
 }

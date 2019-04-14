@@ -13,9 +13,12 @@ import com.example.song.paper.common.DynamicBean;
 import java.util.List;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface HttpService {
     //用户注册
@@ -54,4 +57,14 @@ public interface HttpService {
     //搜索
     @POST("app_api/search.php")
     Observable<BaseResponse<List<AuctionBean>>> search(@Body RequestBody body);
+    //发布动态
+    @POST("app_api/release_dynamic.php")
+    Observable<BaseResponse<Boolean>> ReleaseDynamic(@Body RequestBody body);
+    //发布拍卖
+    @POST("app_api/release_auction.php")
+    Observable<BaseResponse<Boolean>> ReleaseAuction(@Body RequestBody body);
+    //上传图片
+    @POST("app_api/upload.php")
+    @Multipart
+    Observable<BaseResponse<List<String>>> uploadImage(@Part("data")RequestBody body, @Part MultipartBody.Part[] part);
 }

@@ -2,8 +2,21 @@ package com.example.song.paper.release.release_auction;
 
 import com.example.song.paper.base.BaseResponse;
 import com.example.song.paper.common.AuctionBean;
+import com.example.song.paper.global.HttpService;
+import com.example.song.paper.utils.HttpServiceInstance;
+import com.example.song.paper.utils.L;
+import com.example.song.paper.utils.Md5Utils;
+import com.google.gson.Gson;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observable;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 /**
  * User: song
@@ -11,9 +24,34 @@ import io.reactivex.Observable;
  * Time: 14:31
  */
 public class ReleaseAuctionModel implements ReleaseAuctionConstract.IReleaseDynamicModel {
-
+    private HttpService httpService;
+    public ReleaseAuctionModel() {httpService = HttpServiceInstance.getInstance();}
     @Override
     public Observable<BaseResponse<Boolean>> ReleaseDynamic(AuctionBean bean) {
         return null;
+    }
+
+    @Override
+    public Observable<BaseResponse<List<String>>> UploadImage(List<File> images) {
+        String timestamp = Md5Utils.getTimeStamp();
+        String randomstr = Md5Utils.getRandomString(10);
+        String signature = Md5Utils.getSignature(timestamp,randomstr);
+        Map map = new HashMap();
+        map.put("timestamp", timestamp);
+        map.put("randomstr", randomstr);
+        map.put("signature", signature);
+        map.put("action", "upload");
+        Map data = new HashMap();
+        map.put("data", data);
+        Gson gson = new Gson();
+        String str = gson.toJson(map);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), str);
+        MultipartBody.Part[] part = new MultipartBody.Part[images.size()];
+        for (int i = 0; i < images.size(); i++) {
+            RequestBody photoBody = RequestBody.create(MediaType.parse("image/jpg"), images.get(i));
+            part[i] = MultipartBody.Part.createFormData("files[]", images.get(i).getName(), photoBody);
+        }
+        L.e("str is "+str);
+        return httpService.uploadImage(body,part);
     }
 }

@@ -11,6 +11,7 @@ import com.donkingliang.imageselector.view.SquareImageView;
 import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
 import com.example.song.paper.global.GlideApp;
+import com.example.song.paper.utils.L;
 
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class GridImageViewAdapter extends RecyclerView.Adapter<GridImageViewAdap
         if (null == list.get(position) || list.get(position).equals("")) {
             return;
         }
+        L.e("url is:"+AppConstant.Base_Url +list.get(position));
         GlideApp.with(context)
                 .load(AppConstant.Base_Url +list.get(position))
                 .override(300,300)

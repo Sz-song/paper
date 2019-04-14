@@ -1,6 +1,7 @@
 package com.example.song.paper.home.homepage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 
 import com.donkingliang.banner.CustomBanner;
 import com.donkingliang.imageselector.view.SquareImageView;
+import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
+import com.example.song.paper.auction.AuctionDetailActivity;
 import com.example.song.paper.common.AuctionBean;
 import com.example.song.paper.global.GlideApp;
 
@@ -97,7 +100,7 @@ public class HomePageAdpter extends RecyclerView.Adapter {
             });
         }else if(holder instanceof ViewHolder1){
             GlideApp.with(context)
-                    .load(list.get(position-1).getImage())
+                    .load(AppConstant.Base_Url+list.get(position-1).getImage())
                     .placeholder(R.drawable.imageholder)
                     .override(200,200)
                     .into(((ViewHolder1) holder).image);
@@ -106,7 +109,9 @@ public class HomePageAdpter extends RecyclerView.Adapter {
             ((ViewHolder1) holder).time.setText(list.get(position-1).getId());
             ((ViewHolder1) holder).numAuction.setText(list.get(position-1).getName());
             holder.itemView.setOnClickListener(v -> {
-                //TODO 跳转
+                Intent intent=new Intent(context,AuctionDetailActivity.class);
+                intent.putExtra("id",list.get(position-1).getId());
+                context.startActivity(intent);
             });
         }
     }
