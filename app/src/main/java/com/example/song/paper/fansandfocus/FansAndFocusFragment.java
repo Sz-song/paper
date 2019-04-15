@@ -11,13 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
 import com.example.song.paper.common.LoadingDialog;
+import com.example.song.paper.common.OnPositionClickListener;
 import com.example.song.paper.global.GlideApp;
 import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.L;
+import com.example.song.paper.utils.Sp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +74,10 @@ public class FansAndFocusFragment extends BaseFragment<FansAndFocusPresenter> im
         LinearLayoutManager manager=new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerview.setLayoutManager(manager);
         adapter = new FansAndFocusAdapter(getContext(),list);
+        adapter.setFocusClickListener(position -> {
+              dialog.show();
+              presenter.focus(Sp.getString(getContext(),AppConstant.UID),list.get(position).getId(),position);
+        });
         recyclerview.setAdapter(adapter);
         swipe.setOnRefreshListener(() -> {
             page = 0;
@@ -139,6 +147,26 @@ public class FansAndFocusFragment extends BaseFragment<FansAndFocusPresenter> im
                 nodata.setVisibility(View.GONE);
             }
         }
+    }
+
+    @Override
+    public void focusSuccess(Boolean b,int position) {
+        dialog.dismiss();
+        if(b){
+            Toast.makeText(getContext(), "关注成功", Toast.LENGTH_SHORT).show();
+            list.get(position).setIsfocus(1);
+        }else{
+            Toast.makeText(getContext(), "取关成功", Toast.LENGTH_SHORT).show();
+            list.get(position).setIsfocus(0);
+        }
+        adapter.notifyItemChanged(position);
+    }
+
+    @Override
+    public void focusFail(ExceptionHandler.ResponeThrowable e) {
+        dialog.dismiss();
+        L.e(e.status + "   " + e.message);
+        Toast.makeText(getContext(), "操作失败", Toast.LENGTH_SHORT).show();
     }
 
 }

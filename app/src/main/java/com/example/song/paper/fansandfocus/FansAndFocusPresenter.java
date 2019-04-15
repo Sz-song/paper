@@ -43,4 +43,22 @@ public class FansAndFocusPresenter extends BasePresenter<FansAndFocusConstract.I
                     }
                 });
     }
+
+    @Override
+    public void focus(String useraccountid, String userid,int position) {
+        model.focus(useraccountid,userid,position)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(new HttpServiceInstance.ErrorTransformer<Boolean>())
+                .subscribe(new BaseObserver<Boolean>() {
+                    @Override
+                    public void onNext(Boolean s) {
+                        if(view!=null){ view.focusSuccess(s,position); }
+                    }
+                    @Override
+                    public void onError(ExceptionHandler.ResponeThrowable e) {
+                        if(view!=null){ view.focusFail(e); }
+                    }
+                });
+    }
 }

@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
+import com.example.song.paper.common.OnPositionClickListener;
 import com.example.song.paper.global.GlideApp;
 import com.example.song.paper.personal.personal_center.PersonalCenterActivity;
 import java.util.List;
@@ -22,6 +23,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class FansAndFocusAdapter extends RecyclerView.Adapter<FansAndFocusAdapter.ViewHolder> {
     private Context context;
     private List<FansAndFocusBean> list;
+    private OnPositionClickListener focusClickListener;
+
+    public void setFocusClickListener(OnPositionClickListener focusClickListener) {
+        this.focusClickListener = focusClickListener;
+    }
 
     public FansAndFocusAdapter(Context context, List<FansAndFocusBean> list) {
         this.context = context;
@@ -50,14 +56,13 @@ public class FansAndFocusAdapter extends RecyclerView.Adapter<FansAndFocusAdapte
             holder.isfocus.setText("✚ 关注");
             holder.isfocus.setActivated(true);
             holder.isfocus.setTextColor(context.getResources().getColor(R.color.gold));
-        }
-        else if(list.get(position).getIsfocus()==1){
+        } else if(list.get(position).getIsfocus()==1){
             holder.isfocus.setText("✔ 已关注");
             holder.isfocus.setActivated(false);
             holder.isfocus.setTextColor(context.getResources().getColor(R.color.text_black));
         }
         holder.isfocus.setOnClickListener(v -> {
-         //TODO
+         focusClickListener.callback(position);
         });
         holder.item.setOnClickListener(view ->{
             Intent intent=new Intent(context,PersonalCenterActivity.class);

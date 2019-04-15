@@ -36,4 +36,8 @@ public class FansAndFocusBean {
     public int getFans_num() {
         return fans_num;
     }
+
+    public void setIsfocus(int isfocus) {
+        this.isfocus = isfocus;
+    }
 }

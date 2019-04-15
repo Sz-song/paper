@@ -15,14 +15,19 @@ import io.reactivex.Observable;
 public interface FansAndFocusConstract {
     interface IFanAndsFocusModel {
         Observable<BaseResponse<List<FansAndFocusBean>>> initList(String useraccountid,int type,  int page);
+        Observable<BaseResponse<Boolean>> focus(String useraccountid,String userid);
     }
 
     interface IFansAndFocusView {
         void initListSuccess(List<FansAndFocusBean> Beans);
         void initListFail(ExceptionHandler.ResponeThrowable e);
+
+        void focusSuccess(Boolean b,int position);
+        void focusFail(ExceptionHandler.ResponeThrowable e);
     }
 
     interface IFansAndFocusPresenter {
         void initList(String useraccountid,int type, int page);
+        void focus(String useraccountid,String userid,int position);
     }
 }
