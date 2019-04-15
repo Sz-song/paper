@@ -11,6 +11,7 @@ public class AuctionBean {
     private long time_start;
     private long time_end;
     private long time_now;
+    private String useraccountid;
     private List<String> images;
 
 

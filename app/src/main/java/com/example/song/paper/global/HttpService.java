@@ -67,4 +67,7 @@ public interface HttpService {
     @POST("app_api/upload.php")
     @Multipart
     Observable<BaseResponse<List<String>>> uploadImage(@Part("data")RequestBody body, @Part MultipartBody.Part[] part);
+    //获取拍卖详情
+    @POST("app_api/auction_detail.php")
+    Observable<BaseResponse<AuctionBean>> getAuctionDetailData(@Body RequestBody body);
 }

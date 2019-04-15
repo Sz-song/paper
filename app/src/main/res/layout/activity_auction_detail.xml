@@ -60,6 +60,7 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 android:background="@color/transparent"
+                android:layout_marginTop="21dp"
                 app:contentInsetStart="0dp">
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -71,7 +72,7 @@
         android:layout_height="wrap_content">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/im_msg_recyclerview"
-            android:background="@color/lightGray"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:cacheColorHint="#00000000"

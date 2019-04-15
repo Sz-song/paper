@@ -1,5 +1,6 @@
 package com.example.song.paper.auction;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -9,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,6 +74,9 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
 
     @Override
     protected void initEvent() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -94,8 +99,19 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
         name.setText(bean.getName());
         time.setText(getTime(bean.getTime_start(),bean.getTime_end(),bean.getTime_now()));
         imgNum.setText("1/"+bean.getImages().size());
-        priceStart.setText(bean.getPrice_start());
-        priceNow.setText(bean.getPrice_now());
+        priceStart.setText("起拍价:¥"+bean.getPrice_start());
+        priceNow.setText("当前价:¥"+bean.getPrice_now());
+        viewpage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {}
+            @Override
+            public void onPageSelected(int position) {
+                int i = position + 1;
+                imgNum.setText(i + "/" + bean.getImages().size());
+            }
+            @Override
+            public void onPageScrollStateChanged(int i) {}
+        });
 
     }
 
@@ -107,10 +123,10 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
     }
 
     private String getTime(long time_start, long time_end,long time_now) {
-        if (time_start * 1000 > time_now) {
-            return ((time_start * 1000) - time_now) / (1000 * 60 * 60) + "小时" + (((time_start * 1000) - time_now) % (1000 * 60 * 60)) / (1000 * 60) + "分后开始";
-        } else if (time_start * 1000 < time_now && time_end * 1000 > time_now) {
-            return ((time_end * 1000) - time_now) / (1000 * 60 * 60) + "小时" + (((time_end * 1000) - time_now) % (1000 * 60 * 60)) / (1000 * 60) + "分后结束";
+        if (time_start > time_now) {
+            return ((time_start ) - time_now) / (60 * 60) + "小时" + ((time_start - time_now) % (60 * 60)) / (60) + "分后开始";
+        } else if (time_start < time_now && time_end > time_now) {
+            return ((time_end ) - time_now) / (60 * 60) + "小时" + ((time_end  - time_now) % (60 * 60)) / (60) + "分后结束";
         } else {
             return "拍卖已结束";
         }
