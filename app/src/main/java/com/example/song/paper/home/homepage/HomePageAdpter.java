@@ -72,7 +72,7 @@ public class HomePageAdpter extends RecyclerView.Adapter {
                 @Override
                 public void updateUI(Context context, View view, int i, String s) {
                     GlideApp.with(context)
-                            .load(s)
+                            .load(AppConstant.Base_Url+s)
                             .placeholder(R.drawable.imageholder)
                             .override(400,200)
                             .into((ImageView) view);
@@ -81,22 +81,9 @@ public class HomePageAdpter extends RecyclerView.Adapter {
             ((ViewHolder0) holder).banner.startTurning(3000);
             ((ViewHolder0) holder).banner.setScrollDuration(550);
             ((ViewHolder0) holder).banner.setOnPageClickListener((i, o) -> {
-                //TODO  轮播图跳转
-            });
-            ((ViewHolder0) holder).zeroAuction.setOnClickListener(v -> {
-                //TODO 跳转
-            });
-            ((ViewHolder0) holder).newAuction.setOnClickListener(v -> {
-                //TODO 跳转
-            });
-            ((ViewHolder0) holder).hotAuction.setOnClickListener(v -> {
-                //TODO 跳转
-            });
-            ((ViewHolder0) holder).endAuction.setOnClickListener(v -> {
-                //TODO 跳转
-            });
-            ((ViewHolder0) holder).rulerAuction.setOnClickListener(v -> {
-                //TODO 跳转
+                Intent intent=new Intent(context,AuctionDetailActivity.class);
+                intent.putExtra("id","1");
+                context.startActivity(intent);
             });
         }else if(holder instanceof ViewHolder1){
             GlideApp.with(context)
@@ -124,17 +111,6 @@ public class HomePageAdpter extends RecyclerView.Adapter {
     static class ViewHolder0 extends RecyclerView.ViewHolder {
         @BindView(R.id.banner)
         CustomBanner banner;
-        @BindView(R.id.zero_auction)
-        LinearLayout zeroAuction;
-        @BindView(R.id.new_auction)
-        LinearLayout newAuction;
-        @BindView(R.id.hot_auction)
-        LinearLayout hotAuction;
-        @BindView(R.id.end_auction)
-        LinearLayout endAuction;
-        @BindView(R.id.ruler_auction)
-        LinearLayout rulerAuction;
-
         ViewHolder0(View view) {
             super(view);
             ButterKnife.bind(this, view);

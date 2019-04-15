@@ -92,7 +92,7 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
         L.e(e.status+"  "+e.message);
     }
 
-    @OnClick({R.id.portrait, R.id.my_fans, R.id.my_focus, R.id.my_auction, R.id.my_home, R.id.my_collect, R.id.sys_setting})
+    @OnClick({R.id.portrait, R.id.my_fans, R.id.my_focus, R.id.my_auction, R.id.my_home, R.id.my_dynamic})
     public void onViewClicked(View view) {
         Intent intent;
         switch (view.getId()) {
@@ -120,10 +120,16 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
                 startActivity(intent);
                 break;
             case R.id.my_home:
+                intent=new Intent(getContext(),PersonalCenterActivity.class);
+                intent.putExtra("position",0);
+                intent.putExtra("userid",Sp.getString(getContext(),AppConstant.UID));
+                startActivity(intent);
                 break;
-            case R.id.my_collect:
-                break;
-            case R.id.sys_setting:
+            case R.id.my_dynamic:
+                intent=new Intent(getContext(),PersonalCenterActivity.class);
+                intent.putExtra("position",0);
+                intent.putExtra("userid",Sp.getString(getContext(),AppConstant.UID));
+                startActivity(intent);
                 break;
         }
     }

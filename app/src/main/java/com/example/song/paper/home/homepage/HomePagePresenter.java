@@ -12,8 +12,8 @@ public class HomePagePresenter extends BasePresenter<HomePageConstract.IHomePage
     private HomePageConstract.IHomePageModel model;
     public HomePagePresenter() {this.model = new HomePageModel();}
     @Override
-    public void getHomePageData() {
-        model.getHomePageData()
+    public void getHomePageData(String useraccountid) {
+        model.getHomePageData(useraccountid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new HttpServiceInstance.ErrorTransformer<HomePageBean>())

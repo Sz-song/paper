@@ -100,21 +100,6 @@
                     android:layout_height="10dp"/>
                 <!-- cell-->
                 <TextView
-                    android:id="@+id/my_auction"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="@string/my_auction"
-                    android:textSize="16sp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:textColor="@color/text_black"
-                    android:drawableEnd="@mipmap/triangle_right"
-                    android:gravity="center_vertical"/>
-                <View
-                    android:background="@color/backgroundGray"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"/>
-                <TextView
                     android:id="@+id/my_home"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -130,14 +115,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"/>
                 <TextView
-                    android:id="@+id/my_collect"
+                    android:id="@+id/my_dynamic"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:text="@string/my_collect"
+                    android:text="@string/my_dynamic"
                     android:textSize="16sp"
-                    android:textColor="@color/text_black"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
+                    android:textColor="@color/text_black"
                     android:drawableEnd="@mipmap/triangle_right"
                     android:gravity="center_vertical"/>
                 <View
@@ -145,16 +130,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"/>
                 <TextView
-                    android:id="@+id/sys_setting"
+                    android:id="@+id/my_auction"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:text="@string/sys_setting"
+                    android:text="@string/my_auction"
                     android:textSize="16sp"
-                    android:textColor="@color/text_black"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
+                    android:textColor="@color/text_black"
                     android:drawableEnd="@mipmap/triangle_right"
                     android:gravity="center_vertical"/>
+                <View
+                    android:background="@color/backgroundGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"/>
             </LinearLayout>
         </ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>

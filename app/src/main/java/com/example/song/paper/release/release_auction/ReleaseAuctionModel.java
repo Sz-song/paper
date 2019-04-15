@@ -27,8 +27,28 @@ public class ReleaseAuctionModel implements ReleaseAuctionConstract.IReleaseDyna
     private HttpService httpService;
     public ReleaseAuctionModel() {httpService = HttpServiceInstance.getInstance();}
     @Override
-    public Observable<BaseResponse<Boolean>> ReleaseDynamic(AuctionBean bean) {
-        return null;
+    public Observable<BaseResponse<Boolean>> ReleaseAuction(String useraccountid,String name,String time_start,String time_end,String price,List<String> list) {
+        String timestamp = Md5Utils.getTimeStamp();
+        String randomstr = Md5Utils.getRandomString(10);
+        String signature = Md5Utils.getSignature(timestamp,randomstr);
+        Map map = new HashMap();
+        map.put("timestamp",timestamp);
+        map.put("randomstr",randomstr);
+        map.put("signature",signature);
+        map.put("action","release_auction");
+        Map data = new HashMap();
+        data.put("name",name);
+        data.put("useraccountid",useraccountid);
+        data.put("time_start",time_start);
+        data.put("time_end",time_end);
+        data.put("price",price);
+        data.put("list",list);
+        map.put("data",data);
+        Gson gson=new Gson();
+        String str=gson.toJson(map);
+        L.e("str is "+str);
+        RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),str);
+        return httpService.ReleaseAuction(body);
     }
 
     @Override

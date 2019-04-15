@@ -24,6 +24,11 @@ import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.L;
 import com.example.song.paper.utils.Sp;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -132,8 +137,11 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
         }
     }
 
+
+
     @OnClick(R.id.submit)
     public void onViewClicked() {
+
     }
 
     @Override

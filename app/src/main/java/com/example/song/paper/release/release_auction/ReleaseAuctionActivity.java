@@ -11,8 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.donkingliang.imageselector.utils.ImageSelector;
+import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseActivity;
 import com.example.song.paper.common.CustomDatePicker;
@@ -21,9 +23,13 @@ import com.example.song.paper.common.LoadingDialog;
 import com.example.song.paper.common.UploadPhotoAdapter;
 import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.L;
+import com.example.song.paper.utils.Sp;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -129,23 +135,34 @@ public class ReleaseAuctionActivity extends BaseActivity<ReleaseAuctionPresenter
     }
 
     @Override
-    public void ReleaseDynamicSuccess(Boolean b) {
-
+    public void ReleaseAuctionSuccess(Boolean b) {
+        dialog.dismiss();
+        Toast.makeText(this, "发布成功", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
-    public void ReleaseDynamicFail(ExceptionHandler.ResponeThrowable e) {
-
+    public void ReleaseAuctionFail(ExceptionHandler.ResponeThrowable e) {
+        dialog.dismiss();
+        L.e(e.message+ "  "+e.status);
+        list.clear();
+        list.add(addPic);
+        adapter.notifyDataSetChanged();
+        Toast.makeText(this, "发布失败", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void UploadImageSuccess(List<String> images) {
-
+        list.clear();
+        list.addAll(images);
+        presenter.ReleaseAuction(Sp.getString(this,AppConstant.UID),titleAuction.getText().toString(),timeStart.getText().toString(),timeEnd.getText().toString(),priceStart.getText().toString(),list);
     }
 
     @Override
     public void UploadImageFail(ExceptionHandler.ResponeThrowable e) {
-
+        dialog.dismiss();
+        Toast.makeText(this, "上传图片失败", Toast.LENGTH_SHORT).show();
+        L.e(e.status+"   "+e.message);
     }
 
     @OnClick({R.id.time_start, R.id.time_end,R.id.submit})
@@ -158,7 +175,28 @@ public class ReleaseAuctionActivity extends BaseActivity<ReleaseAuctionPresenter
                 picker2.show(timeEnd.getText().toString());
                 break;
             case R.id.submit:
-                //Todo
+                if(titleAuction.getText().toString().trim().length()>0){
+                    if(checkTime(timeStart.getText().toString(),timeEnd.getText().toString())){
+                        if(priceStart.getText().toString().trim().length()>0) {
+                            if (list.size() == 1) {
+                                Toast.makeText(this, "最少上传一张图片", Toast.LENGTH_SHORT).show();
+                            } else if (list.size() > 1 && list.size() < 9) {
+                                list.remove(list.size() - 1);
+                                dialog.show();
+                                compressImage(list);
+                            } else {
+                                dialog.show();
+                                compressImage(list);
+                            }
+                        }else{
+                            Toast.makeText(this, "请输入起拍价格", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(this, "时间输入有误", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(this, "请输入昵称", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
@@ -214,6 +252,27 @@ public class ReleaseAuctionActivity extends BaseActivity<ReleaseAuctionPresenter
                 .map(list -> Luban.with(ReleaseAuctionActivity.this).load(list).get())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(files -> presenter.UploadImage(files));
+    }
+
+    private boolean checkTime(String timeStart, String timeEnd) {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Calendar c1 = Calendar.getInstance();
+        Calendar c2 = Calendar.getInstance();
+        try {
+            c1.setTime(df.parse(timeStart));
+            c2.setTime(df.parse(timeEnd));
+            int result = c1.compareTo(c2);
+            if (result == 0) {
+                return false;
+            } else if (result < 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (ParseException e) {
+            L.e(e.getMessage());
+            return false;
+        }
     }
 
 }

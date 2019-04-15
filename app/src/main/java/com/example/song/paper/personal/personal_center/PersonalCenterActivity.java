@@ -89,9 +89,11 @@ public class PersonalCenterActivity extends BaseActivity<PersonalCenterPresenter
         }
         Intent intent = getIntent();
         userid = intent.getStringExtra("userid");
+        int position=intent.getIntExtra("position",0);
         PersonalFragmentAdapter adapter = new PersonalFragmentAdapter(getSupportFragmentManager(), userid);
         viewpager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewpager);
+        viewpager.setCurrentItem(position);
         presenter.getPersonalCenterData(Sp.getString(this, AppConstant.UID), userid);
     }
 

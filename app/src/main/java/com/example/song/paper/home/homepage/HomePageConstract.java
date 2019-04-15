@@ -7,7 +7,7 @@ import io.reactivex.Observable;
 
 public interface HomePageConstract {
     interface IHomePageModel{
-        Observable<BaseResponse<HomePageBean>>getHomePageData();
+        Observable<BaseResponse<HomePageBean>>getHomePageData(String useraccountid);
     }
 
     interface IHomePageView{
@@ -16,6 +16,6 @@ public interface HomePageConstract {
     }
 
     interface IHomePagePresenter{
-        void getHomePageData();
+        void getHomePageData(String useraccountid);
     }
 }

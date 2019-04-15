@@ -18,7 +18,7 @@ public class HomePageModel implements HomePageConstract.IHomePageModel {
     public HomePageModel (){httpService = HttpServiceInstance.getInstance();}
 
     @Override
-    public Observable<BaseResponse<HomePageBean>> getHomePageData() {
+    public Observable<BaseResponse<HomePageBean>> getHomePageData(String useraccountid) {
         String timestamp = Md5Utils.getTimeStamp();
         String randomstr = Md5Utils.getRandomString(10);
         String signature = Md5Utils.getSignature(timestamp,randomstr);
@@ -28,6 +28,7 @@ public class HomePageModel implements HomePageConstract.IHomePageModel {
         map.put("signature",signature);
         map.put("action","get_home_data");
         Map data = new HashMap();
+        data.put("useraccountid",useraccountid);
         map.put("data",data);
         Gson gson=new Gson();
         String str=gson.toJson(map);

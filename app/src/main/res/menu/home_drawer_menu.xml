@@ -7,11 +7,11 @@
         <item android:id="@+id/my_focus"
             android:title="@string/my_focus"
             android:icon="@drawable/ic_focus"/>
-        <item android:id="@+id/my_collect"
-            android:title="@string/my_collect"
+        <item android:id="@+id/my_fans"
+            android:title="@string/my_fans"
             android:icon="@drawable/ic_mycollect"/>
-        <item android:id="@+id/sys_settting"
-            android:title="@string/sys_setting"
+        <item android:id="@+id/exit_login"
+            android:title="@string/exit_login"
             android:icon="@drawable/ic_sys_setting"/>
     </group>
 </menu>

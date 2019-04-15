@@ -25,8 +25,25 @@ public class ReleaseAuctionPresenter extends BasePresenter<ReleaseAuctionConstra
     }
 
     @Override
-    public void ReleaseDynamic(AuctionBean bean) {
-
+    public void ReleaseAuction(String useraccountid,String name,String time_start,String time_end,String price,List<String> list) {
+        model.ReleaseAuction(useraccountid,name,time_start,time_end,price,list)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(new HttpServiceInstance.ErrorTransformer<Boolean>())
+                .subscribe(new BaseObserver<Boolean>() {
+                    @Override
+                    public void onNext(Boolean aBoolean) {
+                        if(view!=null){
+                            view.ReleaseAuctionSuccess(aBoolean);
+                        }
+                    }
+                    @Override
+                    public void onError(ExceptionHandler.ResponeThrowable e) {
+                        if(view!=null){
+                            view.ReleaseAuctionFail(e);
+                        }
+                    }
+                });
     }
 
     @Override

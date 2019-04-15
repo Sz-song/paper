@@ -18,20 +18,20 @@ import io.reactivex.Observable;
  */
 public interface ReleaseAuctionConstract {
     interface IReleaseDynamicModel{
-        Observable<BaseResponse<Boolean>> ReleaseDynamic(AuctionBean bean);
+        Observable<BaseResponse<Boolean>> ReleaseAuction(String useraccountid,String name,String time_start,String time_end,String price,List<String> list);
         Observable<BaseResponse<List<String>>> UploadImage(List<File> images);
     }
 
     interface IReleaseDynamicView{
-        void ReleaseDynamicSuccess(Boolean b);
-        void ReleaseDynamicFail(ExceptionHandler.ResponeThrowable e);
+        void ReleaseAuctionSuccess(Boolean b);
+        void ReleaseAuctionFail(ExceptionHandler.ResponeThrowable e);
 
         void UploadImageSuccess(List<String> images);
         void UploadImageFail(ExceptionHandler.ResponeThrowable e);
     }
 
     interface IReleaseDynamicPresenter{
-        void ReleaseDynamic(AuctionBean bean);
+        void ReleaseAuction(String useraccountid,String name,String time_start,String time_end,String price,List<String> list);
         void UploadImage(List<File> images);
     }
 }
