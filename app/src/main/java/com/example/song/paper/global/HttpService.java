@@ -24,6 +24,9 @@ public interface HttpService {
     //用户注册
     @POST("app_api/register.php")
     Observable<BaseResponse<String>> register(@Body RequestBody body);
+    //获取验证码
+    @POST("app_api/getcode.php")
+    Observable<BaseResponse<String>> getCode(@Body RequestBody body);
     //用户登录
     @POST("app_api/login.php")
     Observable<BaseResponse<UserBean>> login(@Body RequestBody body);

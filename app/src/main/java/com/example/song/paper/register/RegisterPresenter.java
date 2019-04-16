@@ -28,8 +28,8 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
     }
 
     @Override
-    public void getCode(String username) {
-        model.getCode(username)
+    public void getCode(String phone) {
+        model.getCode(phone)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new HttpServiceInstance.ErrorTransformer<String[]>())

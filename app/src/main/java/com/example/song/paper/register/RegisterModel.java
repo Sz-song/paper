@@ -40,7 +40,7 @@ public class RegisterModel implements RegisterContract.IRegisterModel {
     }
 
     @Override
-    public Observable<BaseResponse<String>> getCode(String username) {
+    public Observable<BaseResponse<String>> getCode(String phone) {
         String timestamp = Md5Utils.getTimeStamp();
         String randomstr = Md5Utils.getRandomString(10);
         String signature = Md5Utils.getSignature(timestamp,randomstr);
@@ -48,14 +48,14 @@ public class RegisterModel implements RegisterContract.IRegisterModel {
         map.put("timestamp",timestamp);
         map.put("randomstr",randomstr);
         map.put("signature",signature);
-        map.put("action","get_validcode");
+        map.put("action","get_code");
         Map data = new HashMap();
-        data.put("username",username);
+        data.put("phone",phone);
         map.put("data",data);
         Gson gson=new Gson();
         String str=gson.toJson(map);
         L.e("str is "+str);
         RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),str);
-        return httpService.register(body);
+        return httpService.getCode(body);
     }
 }
