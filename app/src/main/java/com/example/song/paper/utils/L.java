@@ -3,22 +3,15 @@ package com.example.song.paper.utils;
 import android.util.Log;
 
 public class L {
-    private L()
-    {
-        /* cannot be instantiated */
+    private L() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
     public static boolean isDebug = true;// 是否需要打印bug，可以在application的onCreate函数里面初始化
-    private static final String TAG = "zoneLog";
+    private static final String TAG = "songLog";
 
     // 下面四个是默认tag的函数
-    public static void i(String msg)
-
-
-
-
-    {
+    public static void i(String msg){
         if (!isDebug) return;
         StackTraceElement targetStackTraceElement = getTargetStackTraceElement();
         Log.i(TAG, "(" + targetStackTraceElement.getFileName() + ":"
@@ -26,8 +19,7 @@ public class L {
         Log.i(TAG, msg);
     }
 
-    public static void d(String msg)
-    {
+    public static void d(String msg){
         if (!isDebug) return;
         StackTraceElement targetStackTraceElement = getTargetStackTraceElement();
         Log.d(TAG, "(" + targetStackTraceElement.getFileName() + ":"
@@ -35,8 +27,7 @@ public class L {
         Log.d(TAG, msg);
     }
 
-    public static void e(String msg)
-    {
+    public static void e(String msg){
         if (!isDebug) return;
         StackTraceElement targetStackTraceElement = getTargetStackTraceElement();
         Log.e(TAG, "(" + targetStackTraceElement.getFileName() + ":"
@@ -44,8 +35,7 @@ public class L {
         Log.e(TAG, msg);
     }
 
-    public static void v(String msg)
-    {
+    public static void v(String msg){
         if (!isDebug) return;
         StackTraceElement targetStackTraceElement = getTargetStackTraceElement();
         Log.v(TAG, "(" + targetStackTraceElement.getFileName() + ":"
@@ -54,8 +44,7 @@ public class L {
     }
 
     // 下面是传入自定义tag的函数
-    public static void i(String tag, String msg)
-    {
+    public static void i(String tag, String msg){
         if (!isDebug) return;
         StackTraceElement targetStackTraceElement = getTargetStackTraceElement();
         Log.i(tag, "(" + targetStackTraceElement.getFileName() + ":"
@@ -63,8 +52,7 @@ public class L {
         Log.i(tag, msg);
     }
 
-    public static void d(String tag, String msg)
-    {
+    public static void d(String tag, String msg) {
         if (!isDebug) return;
         StackTraceElement targetStackTraceElement = getTargetStackTraceElement();
         Log.d(tag, "(" + targetStackTraceElement.getFileName() + ":"
@@ -72,8 +60,7 @@ public class L {
         Log.d(tag, msg);
     }
 
-    public static void e(String tag, String msg)
-    {
+    public static void e(String tag, String msg) {
         if (!isDebug) return;
         StackTraceElement targetStackTraceElement = getTargetStackTraceElement();
         Log.e(tag, "(" + targetStackTraceElement.getFileName() + ":"
@@ -81,8 +68,7 @@ public class L {
         Log.e(tag, msg);
     }
 
-    public static void v(String tag, String msg)
-    {
+    public static void v(String tag, String msg) {
         if (!isDebug) return;
         StackTraceElement targetStackTraceElement = getTargetStackTraceElement();
         Log.v(tag, "(" + targetStackTraceElement.getFileName() + ":"

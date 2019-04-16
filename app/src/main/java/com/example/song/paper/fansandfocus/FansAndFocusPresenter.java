@@ -46,7 +46,7 @@ public class FansAndFocusPresenter extends BasePresenter<FansAndFocusConstract.I
 
     @Override
     public void focus(String useraccountid, String userid,int position) {
-        model.focus(useraccountid,userid,position)
+        model.focus(useraccountid,userid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new HttpServiceInstance.ErrorTransformer<Boolean>())
