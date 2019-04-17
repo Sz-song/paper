@@ -64,4 +64,26 @@ public class AuctionDetailModel implements AuctionDetailConstract.IAuctionDetail
         RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),str);
         return httpService.getAuctionRecordData(body);
     }
+
+    @Override
+    public Observable<BaseResponse<Boolean>> sendAuction(String useraccountid, String id, String userid) {
+        String timestamp = Md5Utils.getTimeStamp();
+        String randomstr = Md5Utils.getRandomString(10);
+        String signature = Md5Utils.getSignature(timestamp, randomstr);
+        Map map = new HashMap();
+        map.put("timestamp", timestamp);
+        map.put("randomstr", randomstr);
+        map.put("signature", signature);
+        map.put("action", "send_auction");
+        Map data = new HashMap();
+        data.put("useraccountid", useraccountid);
+        data.put("userid", userid);
+        data.put("id", id);
+        map.put("data", data);
+        Gson gson = new Gson();
+        String str = gson.toJson(map);
+        L.e("str is " + str);
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), str);
+        return httpService.sendAuction(body);
+    }
 }

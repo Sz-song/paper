@@ -82,29 +82,32 @@
             android:scrollbars="none"
             android:stackFromBottom="true"
             android:transcriptMode="normal"/>
+
         <LinearLayout
-            android:layout_gravity="end|top"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/shape_whitesolid_blackstroke_5rd">
+            android:layout_gravity="end|top"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/shape_whitesolid_blackstroke_5rd"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/price_start"
-                android:textColor="@color/text_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textColor="@color/text_black" />
+
             <TextView
                 android:id="@+id/price_now"
-                android:textColor="@color/text_black"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/text_black" />
 
         </LinearLayout>
     </FrameLayout>

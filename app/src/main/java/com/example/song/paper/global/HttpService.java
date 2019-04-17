@@ -77,4 +77,7 @@ public interface HttpService {
     //获取拍卖记录
     @POST("app_api/get_auction_record.php")
     Observable<BaseResponse<List<AuctionRecordBean>>> getAuctionRecordData(@Body RequestBody body);
+    //参与拍卖
+    @POST("app_api/send_auction.php")
+    Observable<BaseResponse<Boolean>> sendAuction(@Body RequestBody body);
 }

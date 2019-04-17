@@ -66,4 +66,26 @@ public class AuctionDetailPresenter extends BasePresenter<AuctionDetailConstract
                     }
                 });
     }
+
+    @Override
+    public void sendAuction(String useraccountid, String id, String userid) {
+        model.sendAuction(useraccountid,id,userid)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(new HttpServiceInstance.ErrorTransformer<Boolean>())
+                .subscribe(new BaseObserver<Boolean>() {
+                    @Override
+                    public void onNext(Boolean b) {
+                        if(view!=null){
+                            view.sendAuctionSuccess(b);
+                        }
+                    }
+                    @Override
+                    public void onError(ExceptionHandler.ResponeThrowable e) {
+                        if(view!=null){
+                            view.sendAuctionFail(e);
+                        }
+                    }
+                });
+    }
 }

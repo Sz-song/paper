@@ -147,6 +147,17 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
         L.e(e.status + "  " + e.message);
         Toast.makeText(this, "获取拍卖记录失败", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void sendAuctionSuccess(Boolean b) {
+
+    }
+
+    @Override
+    public void sendAuctionFail(ExceptionHandler.ResponeThrowable e) {
+
+    }
+
     private String getTime(long time_start, long time_end, long time_now) {
         if (time_start > time_now) {
             return ((time_start) - time_now) / (60 * 60) + "小时" + ((time_start - time_now) % (60 * 60)) / (60) + "分后开始";

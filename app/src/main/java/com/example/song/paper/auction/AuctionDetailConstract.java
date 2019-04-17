@@ -20,6 +20,7 @@ public interface AuctionDetailConstract {
     interface IAuctionDetailModel{
         Observable<BaseResponse<AuctionBean>> getAuctionDetailData(String useraccountid, String id);
         Observable<BaseResponse<List<AuctionRecordBean>>> getAuctionRecordData(String id);
+        Observable<BaseResponse<Boolean>> sendAuction(String useraccountid, String id,String userid);
     }
 
     interface IAuctionDetailView{
@@ -28,10 +29,14 @@ public interface AuctionDetailConstract {
 
         void getAuctionRecordDataSuccess(List<AuctionRecordBean> beans);
         void getAuctionRecordDataFail(ExceptionHandler.ResponeThrowable e);
+
+        void sendAuctionSuccess(Boolean b);
+        void sendAuctionFail(ExceptionHandler.ResponeThrowable e);
     }
 
     interface IAuctionDetailPresenter{
         void getAuctionDetailData(String useraccountid, String id);
         void getAuctionRecordData(String id);
+        void sendAuction(String useraccountid, String id,String userid);
     }
 }
