@@ -84,7 +84,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     }
     @OnClick(R.id.register)
     public void onRegisterClicked() {
-        presenter.register(username.getText().toString(),password.getText().toString(),validcode.getText().toString());
+        presenter.register(username.getText().toString(),password.getText().toString(),validcode.getText().toString(),petname.getText().toString());
     }
 
     @Override

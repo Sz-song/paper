@@ -1,5 +1,6 @@
 package com.example.song.paper.global;
 
+import com.example.song.paper.auction.AuctionRecordBean;
 import com.example.song.paper.base.BaseResponse;
 import com.example.song.paper.common.AuctionBean;
 import com.example.song.paper.fansandfocus.FansAndFocusBean;
@@ -23,10 +24,10 @@ import retrofit2.http.Part;
 public interface HttpService {
     //用户注册
     @POST("app_api/register.php")
-    Observable<BaseResponse<String>> register(@Body RequestBody body);
+    Observable<BaseResponse<Boolean>> register(@Body RequestBody body);
     //获取验证码
     @POST("app_api/getcode.php")
-    Observable<BaseResponse<String>> getCode(@Body RequestBody body);
+    Observable<BaseResponse<Boolean>> getCode(@Body RequestBody body);
     //用户登录
     @POST("app_api/login.php")
     Observable<BaseResponse<UserBean>> login(@Body RequestBody body);
@@ -73,4 +74,7 @@ public interface HttpService {
     //获取拍卖详情
     @POST("app_api/auction_detail.php")
     Observable<BaseResponse<AuctionBean>> getAuctionDetailData(@Body RequestBody body);
+    //获取拍卖记录
+    @POST("app_api/get_auction_record.php")
+    Observable<BaseResponse<List<AuctionRecordBean>>> getAuctionRecordData(@Body RequestBody body);
 }

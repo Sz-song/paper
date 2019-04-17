@@ -6,6 +6,8 @@ import com.example.song.paper.common.AuctionBean;
 import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.HttpServiceInstance;
 
+import java.util.List;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -38,6 +40,28 @@ public class AuctionDetailPresenter extends BasePresenter<AuctionDetailConstract
                     public void onError(ExceptionHandler.ResponeThrowable e) {
                         if(view!=null){
                             view.getAuctionDetailDataFail(e);
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getAuctionRecordData(String id) {
+        model.getAuctionRecordData(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(new HttpServiceInstance.ErrorTransformer<List<AuctionRecordBean>>())
+                .subscribe(new BaseObserver<List<AuctionRecordBean>>() {
+                    @Override
+                    public void onNext(List<AuctionRecordBean> beans) {
+                        if(view!=null){
+                            view.getAuctionRecordDataSuccess(beans);
+                        }
+                    }
+                    @Override
+                    public void onError(ExceptionHandler.ResponeThrowable e) {
+                        if(view!=null){
+                            view.getAuctionRecordDataFail(e);
                         }
                     }
                 });

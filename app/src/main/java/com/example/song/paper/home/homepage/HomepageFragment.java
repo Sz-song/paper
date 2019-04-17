@@ -53,8 +53,6 @@ public class HomepageFragment extends BaseFragment<HomePagePresenter> implements
     NavigationView navigation;
     @BindView(R.id.drawer)
     DrawerLayout drawer;
-    @BindView(R.id.swipe)
-    SwipeRefreshLayout swipe;
     private CircleImageView nav_portrait;
     private TextView nav_name,nav_introduce;
     private ImageView nav_background;
@@ -125,12 +123,10 @@ public class HomepageFragment extends BaseFragment<HomePagePresenter> implements
 
     @Override
     public void initData() {
-        swipe.setRefreshing(true);
         presenter.getHomePageData(Sp.getString(getContext(),AppConstant.UID));
     }
     @Override
     public void getHomePageDataSuccess(HomePageBean bean) {
-        swipe.setRefreshing(false);
         bannerimages.addAll(bean.getBannerimages());
         list.addAll(bean.getList());
         adpter.notifyDataSetChanged();
@@ -154,7 +150,6 @@ public class HomepageFragment extends BaseFragment<HomePagePresenter> implements
     }
     @Override
     public void getHomePageDataFail(ExceptionHandler.ResponeThrowable e) {
-        swipe.setRefreshing(false);
         Toast.makeText(getContext(), e.message, Toast.LENGTH_SHORT).show();
     }
 

@@ -7,6 +7,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -24,10 +25,8 @@ import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.L;
 import com.example.song.paper.utils.Sp;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,8 +53,6 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
     CollapsingToolbarLayout collaspingToorbar;
     @BindView(R.id.appbar)
     AppBarLayout appbar;
-    @BindView(R.id.im_msg_recyclerview)
-    RecyclerView imMsgRecyclerview;
     @BindView(R.id.price_start)
     TextView priceStart;
     @BindView(R.id.price_now)
@@ -64,9 +61,14 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
     TextView submit;
     @BindView(R.id.relat)
     CoordinatorLayout relat;
+    @BindView(R.id.recyclerview)
+    RecyclerView recyclerview;
     private String id;
     private LoadingDialog dialog;
     private ViewPagerAdapter pagerAdapter;
+    private List<AuctionRecordBean> list;
+    private AuctionRecordAdapter adapter;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_auction_detail;
@@ -90,22 +92,28 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
             actionBar.setHomeAsUpIndicator(R.mipmap.back_black);
             actionBar.setDisplayShowTitleEnabled(false);
         }
-        dialog=new LoadingDialog(this);
-        id=getIntent().getStringExtra("id");
+        list=new ArrayList<>();
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        recyclerview.setLayoutManager(manager);
+        adapter = new AuctionRecordAdapter(this, list);
+        recyclerview.setAdapter(adapter);
+        dialog = new LoadingDialog(this);
+        id = getIntent().getStringExtra("id");
         dialog.show();
-        presenter.getAuctionDetailData(Sp.getString(this,AppConstant.UID),id);
+        presenter.getAuctionDetailData(Sp.getString(this, AppConstant.UID), id);
     }
 
     @Override
     public void getAuctionDetailDataSuccess(AuctionBean bean) {
+        presenter.getAuctionRecordData(id);
         dialog.dismiss();
         pagerAdapter = new ViewPagerAdapter(this, bean.getImages());
         viewpage.setAdapter(pagerAdapter);
         name.setText(bean.getName());
-        time.setText(getTime(bean.getTime_start(),bean.getTime_end(),bean.getTime_now()));
-        imgNum.setText("1/"+bean.getImages().size());
-        priceStart.setText("起拍价:¥"+bean.getPrice_start());
-        priceNow.setText("当前价:¥"+bean.getPrice_now());
+        time.setText(getTime(bean.getTime_start(), bean.getTime_end(), bean.getTime_now()));
+        imgNum.setText("1/" + bean.getImages().size());
+        priceStart.setText("起拍价:¥" + bean.getPrice_start());
+        priceNow.setText("当前价:¥" + bean.getPrice_now());
         viewpage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {}
@@ -115,7 +123,8 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
                 imgNum.setText(i + "/" + bean.getImages().size());
             }
             @Override
-            public void onPageScrollStateChanged(int i) {}
+            public void onPageScrollStateChanged(int i) {
+            }
         });
 
     }
@@ -123,20 +132,30 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
     @Override
     public void getAuctionDetailDataFail(ExceptionHandler.ResponeThrowable e) {
         dialog.dismiss();
-        L.e(e.status+"  "+e.message);
+        L.e(e.status + "  " + e.message);
         Toast.makeText(this, "获取数据失败", Toast.LENGTH_SHORT).show();
     }
 
-    private String getTime(long time_start, long time_end,long time_now) {
+    @Override
+    public void getAuctionRecordDataSuccess(List<AuctionRecordBean> beans) {
+        list.addAll(beans);
+        adapter.notifyItemRangeInserted(list.size() - beans.size(), beans.size());
+    }
+
+    @Override
+    public void getAuctionRecordDataFail(ExceptionHandler.ResponeThrowable e) {
+        L.e(e.status + "  " + e.message);
+        Toast.makeText(this, "获取拍卖记录失败", Toast.LENGTH_SHORT).show();
+    }
+    private String getTime(long time_start, long time_end, long time_now) {
         if (time_start > time_now) {
-            return ((time_start ) - time_now) / (60 * 60) + "小时" + ((time_start - time_now) % (60 * 60)) / (60) + "分后开始";
+            return ((time_start) - time_now) / (60 * 60) + "小时" + ((time_start - time_now) % (60 * 60)) / (60) + "分后开始";
         } else if (time_start < time_now && time_end > time_now) {
-            return ((time_end ) - time_now) / (60 * 60) + "小时" + ((time_end  - time_now) % (60 * 60)) / (60) + "分后结束";
+            return ((time_end) - time_now) / (60 * 60) + "小时" + ((time_end - time_now) % (60 * 60)) / (60) + "分后结束";
         } else {
             return "拍卖已结束";
         }
     }
-
 
 
     @OnClick(R.id.submit)
@@ -153,5 +172,4 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
         }
         return true;
     }
-
 }

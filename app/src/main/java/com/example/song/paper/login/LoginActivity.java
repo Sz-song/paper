@@ -32,8 +32,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     EditText password;
     @BindView(R.id.login)
     TextView login;
-    @BindView(R.id.forget_password)
-    TextView forgetPassword;
     @BindView(R.id.register)
     TextView register;
     @Override
@@ -84,16 +82,16 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         password.setText(Sp.getString(this,AppConstant.PASSWORD));
     }
 
-    @OnClick({R.id.login, R.id.forget_password, R.id.register})
+    @OnClick({R.id.login, R.id.register})
     public void onViewClicked(View view) {
         Intent intent;
         switch (view.getId()) {
             case R.id.login:
-                presenter.login(username.getText().toString(),password.getText().toString());
-                break;
-            case R.id.forget_password:
-                intent=new Intent(this,HomeActivity.class);
-                startActivity(intent);
+                if(username.getText().toString().length()>0&&password.getText().toString().length()>5) {
+                    presenter.login(username.getText().toString(), password.getText().toString());
+                }else {
+                    Toast.makeText(this, "请输入完整的账号密码", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.register:
                 intent=new Intent(this,RegisterActivity.class);

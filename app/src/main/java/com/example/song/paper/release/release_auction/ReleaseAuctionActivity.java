@@ -126,7 +126,7 @@ public class ReleaseAuctionActivity extends BaseActivity<ReleaseAuctionPresenter
             timeStart.setText(time);
         }, "1900-01-01 00:00", "2100-01-01 00:00"); // 初始化日期格式请用：yyyy-MM-dd HH:mm，否则不能正常运行
         picker2 = new CustomDatePicker(this, time -> { // 回调接口，获得选中的时间
-            timeStart.setText(time);
+            timeEnd.setText(time);
         }, "1900-01-01 00:00", "2100-01-01 00:00"); // 初始化日期格式请用：yyyy-MM-dd HH:mm，否则不能正常运行
         picker.showSpecificTime(true); // 显示时和分
         picker.setIsLoop(true); // 允许循环滚动

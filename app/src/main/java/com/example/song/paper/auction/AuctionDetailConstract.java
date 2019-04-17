@@ -19,14 +19,19 @@ import io.reactivex.Observable;
 public interface AuctionDetailConstract {
     interface IAuctionDetailModel{
         Observable<BaseResponse<AuctionBean>> getAuctionDetailData(String useraccountid, String id);
+        Observable<BaseResponse<List<AuctionRecordBean>>> getAuctionRecordData(String id);
     }
 
     interface IAuctionDetailView{
         void getAuctionDetailDataSuccess(AuctionBean bean);
         void getAuctionDetailDataFail(ExceptionHandler.ResponeThrowable e);
+
+        void getAuctionRecordDataSuccess(List<AuctionRecordBean> beans);
+        void getAuctionRecordDataFail(ExceptionHandler.ResponeThrowable e);
     }
 
     interface IAuctionDetailPresenter{
         void getAuctionDetailData(String useraccountid, String id);
+        void getAuctionRecordData(String id);
     }
 }

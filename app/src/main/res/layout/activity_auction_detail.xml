@@ -71,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/im_msg_recyclerview"
+            android:id="@+id/recyclerview"
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -83,7 +83,7 @@
             android:stackFromBottom="true"
             android:transcriptMode="normal"/>
         <LinearLayout
-            android:layout_gravity="right|top"
+            android:layout_gravity="end|top"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:layout_width="wrap_content"

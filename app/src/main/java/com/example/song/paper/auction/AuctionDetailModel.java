@@ -9,6 +9,7 @@ import com.example.song.paper.utils.Md5Utils;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -42,5 +43,25 @@ public class AuctionDetailModel implements AuctionDetailConstract.IAuctionDetail
         L.e("str is "+str);
         RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),str);
         return httpService.getAuctionDetailData(body);
+    }
+
+    @Override
+    public Observable<BaseResponse<List<AuctionRecordBean>>> getAuctionRecordData(String id) {
+        String timestamp = Md5Utils.getTimeStamp();
+        String randomstr = Md5Utils.getRandomString(10);
+        String signature = Md5Utils.getSignature(timestamp,randomstr);
+        Map map = new HashMap();
+        map.put("timestamp",timestamp);
+        map.put("randomstr",randomstr);
+        map.put("signature",signature);
+        map.put("action","get_auction_record");
+        Map data = new HashMap();
+        data.put("id",id);
+        map.put("data",data);
+        Gson gson=new Gson();
+        String str=gson.toJson(map);
+        L.e("str is "+str);
+        RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),str);
+        return httpService.getAuctionRecordData(body);
     }
 }

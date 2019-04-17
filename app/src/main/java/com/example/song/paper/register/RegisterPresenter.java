@@ -14,14 +14,14 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
     }
 
     @Override
-    public void register(String username, String password,String validcode) {
-        model.register(username,password,validcode)
+    public void register(String username, String password,String code,String name) {
+        model.register(username,password,code,name)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new HttpServiceInstance.ErrorTransformer<String[]>())
-                .subscribe(new BaseObserver<String[]>() {
+                .subscribe(new BaseObserver<Boolean>() {
                     @Override
-                    public void onNext(String[] strings) {view.registerSuccess();}
+                    public void onNext(Boolean b) {view.registerSuccess();}
                     @Override
                     public void onError(ExceptionHandler.ResponeThrowable e) {view.registerFail(e); }
                 });
@@ -33,9 +33,9 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.IRegisterV
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new HttpServiceInstance.ErrorTransformer<String[]>())
-                .subscribe(new BaseObserver<String[]>() {
+                .subscribe(new BaseObserver<Boolean>() {
                     @Override
-                    public void onNext(String[] strings) {view.getCodeSuccess();}
+                    public void onNext(Boolean strings) {view.getCodeSuccess();}
                     @Override
                     public void onError(ExceptionHandler.ResponeThrowable e) {view.getCodeFail(e); }
                 });

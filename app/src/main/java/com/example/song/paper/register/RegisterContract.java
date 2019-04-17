@@ -7,8 +7,8 @@ import io.reactivex.Observable;
 
 public interface RegisterContract {
     interface IRegisterModel {
-        Observable<BaseResponse<String>> register(String username, String password,String validcode);
-        Observable<BaseResponse<String>> getCode(String username);
+        Observable<BaseResponse<Boolean>> register(String username, String password,String code,String name);
+        Observable<BaseResponse<Boolean>> getCode(String username);
     }
     interface IRegisterView {
         void registerSuccess();
@@ -17,7 +17,7 @@ public interface RegisterContract {
         void getCodeFail(ExceptionHandler.ResponeThrowable e);
     }
     interface IRegisterPresenter {
-        void register(String username, String password,String validcode);
+        void register(String username, String password,String code,String name);
         void getCode(String username);
     }
 

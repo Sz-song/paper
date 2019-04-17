@@ -18,7 +18,7 @@ public class RegisterModel implements RegisterContract.IRegisterModel {
     public RegisterModel(){httpService = HttpServiceInstance.getInstance();}
 
     @Override
-    public Observable<BaseResponse<String>> register(String username, String password ,String validcode) {
+    public Observable<BaseResponse<Boolean>> register(String username, String password ,String code,String name) {
         String timestamp = Md5Utils.getTimeStamp();
         String randomstr = Md5Utils.getRandomString(10);
         String signature = Md5Utils.getSignature(timestamp,randomstr);
@@ -30,7 +30,8 @@ public class RegisterModel implements RegisterContract.IRegisterModel {
         Map data = new HashMap();
         data.put("username",username);
         data.put("password",password);
-        data.put("pavalidcode",validcode);
+        data.put("code",code);
+        data.put("name",name);
         map.put("data",data);
         Gson gson=new Gson();
         String str=gson.toJson(map);
@@ -40,7 +41,7 @@ public class RegisterModel implements RegisterContract.IRegisterModel {
     }
 
     @Override
-    public Observable<BaseResponse<String>> getCode(String phone) {
+    public Observable<BaseResponse<Boolean>> getCode(String phone) {
         String timestamp = Md5Utils.getTimeStamp();
         String randomstr = Md5Utils.getRandomString(10);
         String signature = Md5Utils.getSignature(timestamp,randomstr);
