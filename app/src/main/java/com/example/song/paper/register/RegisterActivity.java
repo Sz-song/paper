@@ -1,16 +1,21 @@
 package com.example.song.paper.register;
 
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseActivity;
+import com.example.song.paper.global.GlideApp;
 import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.L;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -35,6 +40,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     EditText rePassword;
     @BindView(R.id.register)
     TextView register;
+    @BindView(R.id.back)
+    ImageView back;
 
     @Override
     protected int getLayout() {
@@ -57,6 +64,10 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
             actionBar.setDisplayShowTitleEnabled(false);
         }
         title.setText("注册");
+        GlideApp.with(this)
+                .load(R.drawable.back)
+                .override(800,1600)
+                .into(back);
     }
 
     @Override
@@ -64,49 +75,57 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
         finish();
     }
+
     @Override
     public void registerFail(ExceptionHandler.ResponeThrowable e) {
-        L.e(e.message+"  "+e.status);
+        L.e(e.message + "  " + e.status);
         Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show();
     }
+
     @Override
     public void getCodeSuccess() {
         timer.start();
     }
+
     @Override
     public void getCodeFail(ExceptionHandler.ResponeThrowable e) {
-        L.e(e.message+"  "+e.status);
+        L.e(e.message + "  " + e.status);
         Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show();
     }
+
     @OnClick(R.id.getcode)
     public void onGetcodeClicked() {
         presenter.getCode(username.getText().toString());
     }
+
     @OnClick(R.id.register)
     public void onRegisterClicked() {
-        presenter.register(username.getText().toString(),password.getText().toString(),validcode.getText().toString(),petname.getText().toString());
+        presenter.register(username.getText().toString(), password.getText().toString(), validcode.getText().toString(), petname.getText().toString());
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(timer!=null){
+        if (timer != null) {
             timer.cancel();
             timer = null;
         }
     }
+
     private CountDownTimer timer = new CountDownTimer(60000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
             getcode.setEnabled(false);
             getcode.setText((millisUntilFinished / 1000) + "秒后可重发");
         }
+
         @Override
         public void onFinish() {
             getcode.setEnabled(true);
             getcode.setText("获取验证码");
         }
     };
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
