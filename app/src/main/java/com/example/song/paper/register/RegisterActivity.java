@@ -66,7 +66,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         title.setText("注册");
         GlideApp.with(this)
                 .load(R.drawable.back)
-                .override(800,1600)
                 .into(back);
     }
 
