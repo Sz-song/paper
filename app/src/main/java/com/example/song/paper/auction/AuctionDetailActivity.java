@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -65,10 +66,9 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
     RecyclerView recyclerview;
     private String id;
     private LoadingDialog dialog;
-    private ViewPagerAdapter pagerAdapter;
     private List<AuctionRecordBean> list;
     private AuctionRecordAdapter adapter;
-
+    private String price_now;
     @Override
     protected int getLayout() {
         return R.layout.activity_auction_detail;
@@ -106,8 +106,9 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
     @Override
     public void getAuctionDetailDataSuccess(AuctionBean bean) {
         presenter.getAuctionRecordData(id);
+        price_now=bean.getPrice_now();
         dialog.dismiss();
-        pagerAdapter = new ViewPagerAdapter(this, bean.getImages());
+        ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(this, bean.getImages());
         viewpage.setAdapter(pagerAdapter);
         name.setText(bean.getName());
         time.setText(getTime(bean.getTime_start(), bean.getTime_end(), bean.getTime_now()));
@@ -171,7 +172,16 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
 
     @OnClick(R.id.submit)
     public void onViewClicked() {
-
+        try {
+            AuctionOfferPopupwindows popupwindows = new AuctionOfferPopupwindows(this, Double.parseDouble(price_now));
+            popupwindows.showAtLocation(findViewById(R.id.relat), Gravity.BOTTOM, 0, 0);
+            popupwindows.setOfferListener(price -> {
+                Toast.makeText(this, "出价"+price, Toast.LENGTH_SHORT).show();
+                popupwindows.dismiss();
+            });
+        }catch (Exception e){
+            Toast.makeText(this, "未知错误", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
