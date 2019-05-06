@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
 import com.example.song.paper.base.BaseFragment;
+import com.example.song.paper.global.GlideApp;
+import com.example.song.paper.utils.ExceptionHandler;
 import com.example.song.paper.utils.Sp;
 
 import java.util.ArrayList;
@@ -59,6 +61,17 @@ public class MessageFragment extends BaseFragment<MessagePresenter> implements M
             actionBar.setDisplayHomeAsUpEnabled(false);
             actionBar.setDisplayShowTitleEnabled(false);
         }
+        swipe.setOnRefreshListener(() -> {
+            page = 0;
+            list.clear();
+            adapter.notifyDataSetChanged();
+            presenter.getMessageData(Sp.getString(getContext(),AppConstant.UID),page);
+        });
+        GlideApp.with(getActivity())
+                .load(R.drawable.nodata)
+                .override(nodataImg.getWidth(), nodataImg.getHeight())
+                .into(nodataImg);
+        nodata.setText("暂时没有数据");
         page=0;
         list=new ArrayList<>();
         LinearLayoutManager manager=new LinearLayoutManager(getContext());
@@ -72,8 +85,7 @@ public class MessageFragment extends BaseFragment<MessagePresenter> implements M
         presenter.getMessageData(Sp.getString(getContext(),AppConstant.UID),page);
     }
     @Override
-    public void updata(List<MessageBean> messageBeans, boolean success) {
-        if(success){
+    public void getMessageDataSuccess(List<MessageBean> messageBeans) {
             list.addAll(messageBeans);
             if(isAlive){
                 adapter.notifyItemRangeInserted(list.size() - messageBeans.size(),messageBeans.size());
@@ -89,25 +101,26 @@ public class MessageFragment extends BaseFragment<MessagePresenter> implements M
                     nodata.setVisibility(View.GONE);
                 }
             }
-        }else{
-            if(isAlive) {
-                swipe.setRefreshing(false);
-                if (list.size() == 0) {
-                    nodataImg.setVisibility(View.VISIBLE);
-                    nodata.setVisibility(View.VISIBLE);
-                } else {
-                    nodataImg.setVisibility(View.GONE);
-                    nodata.setVisibility(View.GONE);
-                }
+        }
+
+    @Override
+    public void getMessageDataFail(ExceptionHandler.ResponeThrowable e) {
+        if(isAlive) {
+            swipe.setRefreshing(false);
+            if (list.size() == 0) {
+                nodataImg.setVisibility(View.VISIBLE);
+                nodata.setVisibility(View.VISIBLE);
+            } else {
+                nodataImg.setVisibility(View.GONE);
+                nodata.setVisibility(View.GONE);
             }
         }
     }
-    @OnClick({R.id.nodata_img, R.id.nodata})
+
+    @OnClick({R.id.nodata_img})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.nodata_img:
-                break;
-            case R.id.nodata:
                 break;
         }
     }

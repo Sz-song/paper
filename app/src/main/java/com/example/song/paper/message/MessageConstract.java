@@ -1,6 +1,7 @@
 package com.example.song.paper.message;
 
 import com.example.song.paper.base.BaseResponse;
+import com.example.song.paper.utils.ExceptionHandler;
 
 import java.util.List;
 
@@ -12,7 +13,8 @@ public interface MessageConstract {
     }
 
     interface IMessageView{
-        void updata(List<MessageBean> messageBeans, boolean success);
+        void getMessageDataSuccess(List<MessageBean> messageBeans);
+        void getMessageDataFail(ExceptionHandler.ResponeThrowable e);
     }
 
     interface IMessagePresenter{

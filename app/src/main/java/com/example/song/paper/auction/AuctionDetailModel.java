@@ -66,7 +66,7 @@ public class AuctionDetailModel implements AuctionDetailConstract.IAuctionDetail
     }
 
     @Override
-    public Observable<BaseResponse<Boolean>> sendAuction(String useraccountid, String id, String userid) {
+    public Observable<BaseResponse<Boolean>> AuctionOffer(String useraccountid, String auction_id, String price) {
         String timestamp = Md5Utils.getTimeStamp();
         String randomstr = Md5Utils.getRandomString(10);
         String signature = Md5Utils.getSignature(timestamp, randomstr);
@@ -74,16 +74,37 @@ public class AuctionDetailModel implements AuctionDetailConstract.IAuctionDetail
         map.put("timestamp", timestamp);
         map.put("randomstr", randomstr);
         map.put("signature", signature);
-        map.put("action", "send_auction");
+        map.put("action", "auction_offer");
         Map data = new HashMap();
         data.put("useraccountid", useraccountid);
-        data.put("userid", userid);
-        data.put("id", id);
+        data.put("auction_id", auction_id);
+        data.put("price", price);
         map.put("data", data);
         Gson gson = new Gson();
         String str = gson.toJson(map);
         L.e("str is " + str);
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), str);
-        return httpService.sendAuction(body);
+        return httpService.AuctionOffer(body);
+    }
+
+    @Override
+    public Observable<BaseResponse<List<AuctionRecordBean>>> getAuctionRecordLate(String auction_id, String time) {
+        String timestamp = Md5Utils.getTimeStamp();
+        String randomstr = Md5Utils.getRandomString(10);
+        String signature = Md5Utils.getSignature(timestamp, randomstr);
+        Map map = new HashMap();
+        map.put("timestamp", timestamp);
+        map.put("randomstr", randomstr);
+        map.put("signature", signature);
+        map.put("action", "auction_get_price");
+        Map data = new HashMap();
+        data.put("auction_id", auction_id);
+        data.put("time", time);
+        map.put("data", data);
+        Gson gson = new Gson();
+        String str = gson.toJson(map);
+        L.e("str is " + str);
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), str);
+        return httpService.getAuctionRecordLate(body);
     }
 }

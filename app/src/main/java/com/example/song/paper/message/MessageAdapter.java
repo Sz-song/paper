@@ -1,6 +1,7 @@
 package com.example.song.paper.message;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.song.paper.AppConstant;
 import com.example.song.paper.R;
+import com.example.song.paper.chat.ChatActivity;
 import com.example.song.paper.global.GlideApp;
 import com.example.song.paper.utils.ParseUtils;
 
@@ -45,7 +47,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         holder.time.setText(ParseUtils.CountTime(list.get(position).getTime()));
         holder.content.setText(list.get(position).getContent());
         holder.itemView.setOnClickListener(v -> {
-            //TODO 跳转到聊天详情页
+            Intent intent=new Intent(context,ChatActivity.class);
+            intent.putExtra("userid",list.get(position).getUserid());
+            intent.putExtra("name",list.get(position).getName());
+            context.startActivity(intent);
         });
     }
 

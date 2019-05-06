@@ -58,6 +58,9 @@
             android:name="com.donkingliang.imageselector.ClipImageActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".auction.AuctionDetailActivity" />
+        <activity android:name=".chat.ChatActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
         <!-- Android 7.0 文件共享配置，必须配置 -->
         <provider
             android:name="android.support.v4.content.FileProvider"

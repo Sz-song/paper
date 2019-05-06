@@ -68,8 +68,8 @@ public class AuctionDetailPresenter extends BasePresenter<AuctionDetailConstract
     }
 
     @Override
-    public void sendAuction(String useraccountid, String id, String userid) {
-        model.sendAuction(useraccountid,id,userid)
+    public void AuctionOffer(String useraccountid, String auction_id, String price) {
+        model.AuctionOffer(useraccountid,auction_id,price)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new HttpServiceInstance.ErrorTransformer<Boolean>())
@@ -77,13 +77,35 @@ public class AuctionDetailPresenter extends BasePresenter<AuctionDetailConstract
                     @Override
                     public void onNext(Boolean b) {
                         if(view!=null){
-                            view.sendAuctionSuccess(b);
+                            view.AuctionOfferSuccess(b);
                         }
                     }
                     @Override
                     public void onError(ExceptionHandler.ResponeThrowable e) {
                         if(view!=null){
-                            view.sendAuctionFail(e);
+                            view.AuctionOfferFail(e);
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getAuctionRecordLate(String auction_id, String time) {
+        model.getAuctionRecordLate(auction_id,time)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(new HttpServiceInstance.ErrorTransformer<List<AuctionRecordBean>>())
+                .subscribe(new BaseObserver<List<AuctionRecordBean>>() {
+                    @Override
+                    public void onNext(List<AuctionRecordBean> beans) {
+                        if(view!=null){
+                            view.getAuctionRecordLateSuccess(beans);
+                        }
+                    }
+                    @Override
+                    public void onError(ExceptionHandler.ResponeThrowable e) {
+                        if(view!=null){
+                            view.getAuctionRecordLateFail(e);
                         }
                     }
                 });

@@ -26,10 +26,15 @@ public class MessagePresenter extends BasePresenter<MessageConstract.IMessageVie
                 .subscribe(new BaseObserver<List<MessageBean>>() {
                     @Override
                     public void onNext(List<MessageBean> messageBeans) {
-                        view.updata(messageBeans,true);
+                        if(view!=null) {
+                            view.getMessageDataSuccess(messageBeans);
+                        }
                     }
                     @Override
                     public void onError(ExceptionHandler.ResponeThrowable e) {
+                        if(view!=null) {
+                            view.getMessageDataFail(e);
+                        }
                     }
                 });
     }

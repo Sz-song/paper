@@ -2,6 +2,7 @@ package com.example.song.paper.auction;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -69,6 +70,8 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
     private List<AuctionRecordBean> list;
     private AuctionRecordAdapter adapter;
     private String price_now;
+    private String last_time;
+    private CountDownTimer countDownTimer;
     @Override
     protected int getLayout() {
         return R.layout.activity_auction_detail;
@@ -141,6 +144,25 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
     public void getAuctionRecordDataSuccess(List<AuctionRecordBean> beans) {
         list.addAll(beans);
         adapter.notifyItemRangeInserted(list.size() - beans.size(), beans.size());
+        if(list.size()>0) {
+            last_time = list.get(list.size() - 1).getTime();
+            price_now=list.get(list.size() - 1).getPrice();
+            priceNow.setText("当前价:¥" + price_now);
+        }else{
+            last_time=System.currentTimeMillis()/1000+"";
+            L.e("last time is"+last_time);
+        }
+        countDownTimer=new CountDownTimer(24*60*60*1000,60*1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                presenter.getAuctionRecordLate(id,last_time);
+            }
+
+            @Override
+            public void onFinish() {
+                finish();
+            }
+        }.start();
     }
 
     @Override
@@ -150,13 +172,36 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
     }
 
     @Override
-    public void sendAuctionSuccess(Boolean b) {
-
+    public void AuctionOfferSuccess(Boolean b) {
+        if(b){
+            Toast.makeText(this, "出价成功", Toast.LENGTH_SHORT).show();
+            presenter.getAuctionRecordLate(id,last_time);
+        }
     }
 
     @Override
-    public void sendAuctionFail(ExceptionHandler.ResponeThrowable e) {
+    public void AuctionOfferFail(ExceptionHandler.ResponeThrowable e) {
+        L.e(e.message+"  "+e.status);
+        Toast.makeText(this, "出价失败", Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void getAuctionRecordLateSuccess(List<AuctionRecordBean> beans) {
+        list.addAll(beans);
+        adapter.notifyItemRangeInserted(list.size() - beans.size(), beans.size());
+        if(list.size()>0) {
+            last_time = list.get(list.size() - 1).getTime();
+            price_now=list.get(list.size() - 1).getPrice();
+            priceNow.setText("当前价:¥" + price_now);
+        }else{
+            last_time=System.currentTimeMillis()/1000+"";
+            L.e("last time is"+last_time);
+        }
+    }
+
+    @Override
+    public void getAuctionRecordLateFail(ExceptionHandler.ResponeThrowable e) {
+        L.e(e.status + "  " + e.message);
     }
 
     private String getTime(long time_start, long time_end, long time_now) {
@@ -176,8 +221,12 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
             AuctionOfferPopupwindows popupwindows = new AuctionOfferPopupwindows(this, Double.parseDouble(price_now));
             popupwindows.showAtLocation(findViewById(R.id.relat), Gravity.BOTTOM, 0, 0);
             popupwindows.setOfferListener(price -> {
-                Toast.makeText(this, "出价"+price, Toast.LENGTH_SHORT).show();
-                popupwindows.dismiss();
+                if(price>Double.parseDouble(price_now)) {
+                    presenter.AuctionOffer(Sp.getString(this, AppConstant.UID), id, price + "");
+                    popupwindows.dismiss();
+                }else{
+                    Toast.makeText(this, "出价需要大于当前价", Toast.LENGTH_SHORT).show();
+                }
             });
         }catch (Exception e){
             Toast.makeText(this, "未知错误", Toast.LENGTH_SHORT).show();
@@ -192,5 +241,14 @@ public class AuctionDetailActivity extends BaseActivity<AuctionDetailPresenter> 
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(countDownTimer!=null){
+            countDownTimer.cancel();
+            countDownTimer=null;
+        }
     }
 }

@@ -59,7 +59,7 @@ public class AuctionOfferPopupwindows extends PopupWindow {
             priceMy.setText(this.currentPrice+"");
         });
         checkAdd.setOnClickListener(v -> {
-            offerListener.callback(currentPrice);
+            offerListener.callback(this.currentPrice);
         });
     }
 
