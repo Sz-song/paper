@@ -42,10 +42,10 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
                 .placeholder(R.drawable.imageholder)
                 .override(200,200)
                 .into(holder.image);
-        holder.price.setText("¥"+list.get(position).getPrice_now());
-        holder.name.setText(list.get(position).getName());
-        holder.time.setText(list.get(position).getId());
-        holder.numAuction.setText(list.get(position).getName());
+        holder.price.setText("当前价：¥"+list.get(position).getPrice_now());
+        holder.name.setText("拍品名："+list.get(position).getName());
+        holder.time.setVisibility(View.GONE);
+        holder.numAuction.setVisibility(View.GONE);
         holder.itemView.setOnClickListener(v -> {
             Intent intent=new Intent(context,AuctionDetailActivity.class);
             intent.putExtra("id",list.get(position).getId());

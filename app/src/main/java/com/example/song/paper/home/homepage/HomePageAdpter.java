@@ -82,7 +82,7 @@ public class HomePageAdpter extends RecyclerView.Adapter {
             ((ViewHolder0) holder).banner.setScrollDuration(550);
             ((ViewHolder0) holder).banner.setOnPageClickListener((i, o) -> {
                 Intent intent=new Intent(context,AuctionDetailActivity.class);
-                intent.putExtra("id","1");
+                intent.putExtra("id","26");
                 context.startActivity(intent);
             });
         }else if(holder instanceof ViewHolder1){
@@ -91,10 +91,12 @@ public class HomePageAdpter extends RecyclerView.Adapter {
                     .placeholder(R.drawable.imageholder)
                     .override(200,200)
                     .into(((ViewHolder1) holder).image);
-            ((ViewHolder1) holder).price.setText("¥"+list.get(position-1).getPrice_now());
-            ((ViewHolder1) holder).name.setText(list.get(position-1).getName());
-            ((ViewHolder1) holder).time.setText(list.get(position-1).getId());
-            ((ViewHolder1) holder).numAuction.setText(list.get(position-1).getName());
+            ((ViewHolder1) holder).price.setText("当前价：¥"+list.get(position-1).getPrice_now());
+            ((ViewHolder1) holder).name.setText("拍品名："+list.get(position-1).getName());
+            ((ViewHolder1) holder).time.setVisibility(View.GONE);
+            ((ViewHolder1) holder).numAuction.setVisibility(View.GONE);
+//            ((ViewHolder1) holder).time.setText(list.get(position-1).getId());
+//            ((ViewHolder1) holder).numAuction.setText(list.get(position-1).getName());
             holder.itemView.setOnClickListener(v -> {
                 Intent intent=new Intent(context,AuctionDetailActivity.class);
                 intent.putExtra("id",list.get(position-1).getId());
